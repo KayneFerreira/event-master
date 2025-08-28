@@ -39,35 +39,35 @@ public enum State {
     RIO_GRANDE_DO_SUL(26, "RS", "Rio Grande do Sul"),
     SANTA_CATARINA(27, "SC", "Santa Catarina");
 
-    private final int codigo;
-    private final String sigla;
-    private final String nome;
+    private final int code;
+    private final String acronym;
+    private final String name;
 
-    State(int codigo, String sigla, String nome) {
-        this.codigo = codigo;
-        this.sigla = sigla;
-        this.nome = nome;
+    State(int code, String acronym, String name) {
+        this.code = code;
+        this.acronym = acronym;
+        this.name = name;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCode() {
+        return code;
     }
 
-    public String getSigla() {
-        return sigla;
+    public String getAcronym() {
+        return acronym;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public static State getByCodigo(int codigo) {
-        for (State estado : values()) {
-            if (estado.getCodigo() == codigo) {
-                return estado;
+    public static State getByCodigo(int code) {
+        for (State state : values()) {
+            if (state.getCode() == code) {
+                return state;
             }
         }
-        throw new IllegalArgumentException("Código inválido: " + codigo);
+        throw new IllegalArgumentException("Código inválido: " + code);
     }
 
 }
