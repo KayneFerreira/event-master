@@ -3,7 +3,7 @@ package com.project.event_master.entities;
 import java.time.Instant;
 import java.util.ArrayList;
 
-import com.project.event_master.entities.enums.Stats;
+import com.project.event_master.entities.enums.Status;
 
 public class ScheduleEntity {
 
@@ -11,7 +11,7 @@ public class ScheduleEntity {
     UserEntity organizer;
     EventEntity event;
     Instant createdAt;
-    Stats status;
+    Status status;
     ArrayList<UserEntity> participants;
 
 }
