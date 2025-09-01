@@ -61,7 +61,7 @@ public enum State {
         return name;
     }
 
-    public static State getByCodigo(int code) {
+    public static State getByCode(int code) {
         for (State state : values()) {
             if (state.getCode() == code) {
                 return state;

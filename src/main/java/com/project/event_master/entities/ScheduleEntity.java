@@ -8,12 +8,12 @@ import com.project.event_master.entities.enums.Status;
 public class ScheduleEntity {
 
     // ATTRIBUTES
-    Long id;
-    UserEntity organizer;
-    EventEntity event;
-    Instant createdAt;
-    Status status;
-    ArrayList<UserEntity> participants;
+    private Long id;
+    private UserEntity organizer;
+    private EventEntity event;
+    private Instant createdAt;
+    private Status status;
+    private ArrayList<UserEntity> participants;
 
     // CONSTRUCTORS
     public ScheduleEntity() {}

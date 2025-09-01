@@ -5,13 +5,13 @@ import com.project.event_master.entities.enums.State;
 public class PhysicalAddress {
 
     // ATTRIBUTES
-    Long id;
-    String street;
-    String addressComplement;
-    String zipCode;
-    String district;
-    String city;
-    State state;
+    private Long id;
+    private String street;
+    private String addressComplement;
+    private String zipCode;
+    private String district;
+    private String city;
+    private State state;
 
     // CONSTRUCTORS
     public PhysicalAddress() {}

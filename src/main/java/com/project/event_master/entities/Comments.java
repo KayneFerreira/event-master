@@ -3,10 +3,10 @@ package com.project.event_master.entities;
 public class Comments {
 
     // ATTRIBUTES
-    Long id;
-    String text;
-    UserEntity author;
-    EventEntity event;
+    private Long id;
+    private String text;
+    private UserEntity author;
+    private EventEntity event;
     
     // CONSTRUCTORS
     public Comments() {}
