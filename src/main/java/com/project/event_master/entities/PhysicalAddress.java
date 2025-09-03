@@ -1,5 +1,7 @@
 package com.project.event_master.entities;
 
+import java.util.Objects;
+
 import com.project.event_master.entities.enums.State;
 
 public class PhysicalAddress {
@@ -80,16 +82,7 @@ public class PhysicalAddress {
     // HASH CODE & EQUALS
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((street == null) ? 0 : street.hashCode());
-        result = prime * result + ((addressComplement == null) ? 0 : addressComplement.hashCode());
-        result = prime * result + ((zipCode == null) ? 0 : zipCode.hashCode());
-        result = prime * result + ((district == null) ? 0 : district.hashCode());
-        result = prime * result + ((city == null) ? 0 : city.hashCode());
-        result = prime * result + ((state == null) ? 0 : state.hashCode());
-        return result;
+        return Objects.hash(id, street, addressComplement, zipCode, district, city, state);
     }
     @Override
     public boolean equals(Object obj) {
@@ -100,39 +93,9 @@ public class PhysicalAddress {
         if (getClass() != obj.getClass())
             return false;
         PhysicalAddress other = (PhysicalAddress) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (street == null) {
-            if (other.street != null)
-                return false;
-        } else if (!street.equals(other.street))
-            return false;
-        if (addressComplement == null) {
-            if (other.addressComplement != null)
-                return false;
-        } else if (!addressComplement.equals(other.addressComplement))
-            return false;
-        if (zipCode == null) {
-            if (other.zipCode != null)
-                return false;
-        } else if (!zipCode.equals(other.zipCode))
-            return false;
-        if (district == null) {
-            if (other.district != null)
-                return false;
-        } else if (!district.equals(other.district))
-            return false;
-        if (city == null) {
-            if (other.city != null)
-                return false;
-        } else if (!city.equals(other.city))
-            return false;
-        if (state != other.state)
-            return false;
-        return true;
+        return Objects.equals(id, other.id) && Objects.equals(street, other.street)
+                && Objects.equals(addressComplement, other.addressComplement) && Objects.equals(zipCode, other.zipCode)
+                && Objects.equals(district, other.district) && Objects.equals(city, other.city) && state == other.state;
     }
-    
+
 }

@@ -2,6 +2,7 @@ package com.project.event_master.entities;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Objects;
 
 import com.project.event_master.entities.enums.AccessLevel;
 
@@ -110,22 +111,9 @@ public class UserEntity {
     // HASH CODE & EQUALS
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-        result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
-        result = prime * result + ((username == null) ? 0 : username.hashCode());
-        result = prime * result + ((password == null) ? 0 : password.hashCode());
-        result = prime * result + ((address == null) ? 0 : address.hashCode());
-        result = prime * result + ((accessLevel == null) ? 0 : accessLevel.hashCode());
-        result = prime * result + ((createdAt == null) ? 0 : createdAt.hashCode());
-        return result;
+        return Objects.hash(userId, name, cpf, birthDate, email, phoneNumber, username, password, address, accessLevel,
+                createdAt);
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -135,59 +123,12 @@ public class UserEntity {
         if (getClass() != obj.getClass())
             return false;
         UserEntity other = (UserEntity) obj;
-        if (userId == null) {
-            if (other.userId != null)
-                return false;
-        } else if (!userId.equals(other.userId))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (cpf == null) {
-            if (other.cpf != null)
-                return false;
-        } else if (!cpf.equals(other.cpf))
-            return false;
-        if (birthDate == null) {
-            if (other.birthDate != null)
-                return false;
-        } else if (!birthDate.equals(other.birthDate))
-            return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (phoneNumber == null) {
-            if (other.phoneNumber != null)
-                return false;
-        } else if (!phoneNumber.equals(other.phoneNumber))
-            return false;
-        if (username == null) {
-            if (other.username != null)
-                return false;
-        } else if (!username.equals(other.username))
-            return false;
-        if (password == null) {
-            if (other.password != null)
-                return false;
-        } else if (!password.equals(other.password))
-            return false;
-        if (address == null) {
-            if (other.address != null)
-                return false;
-        } else if (!address.equals(other.address))
-            return false;
-        if (accessLevel != other.accessLevel)
-            return false;
-        if (createdAt == null) {
-            if (other.createdAt != null)
-                return false;
-        } else if (!createdAt.equals(other.createdAt))
-            return false;
-        return true;
+        return Objects.equals(userId, other.userId) && Objects.equals(name, other.name)
+                && Objects.equals(cpf, other.cpf) && Objects.equals(birthDate, other.birthDate)
+                && Objects.equals(email, other.email) && Objects.equals(phoneNumber, other.phoneNumber)
+                && Objects.equals(username, other.username) && Objects.equals(password, other.password)
+                && Objects.equals(address, other.address) && accessLevel == other.accessLevel
+                && Objects.equals(createdAt, other.createdAt);
     }
-    
+
 }

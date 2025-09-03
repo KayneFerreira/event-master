@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import com.project.event_master.entities.enums.AccessType;
 
@@ -139,24 +140,9 @@ public class EventEntity {
     // HASH CODE & EQUALS
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((eventId == null) ? 0 : eventId.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        result = prime * result + ((subDescription == null) ? 0 : subDescription.hashCode());
-        result = prime * result + ((description == null) ? 0 : description.hashCode());
-        result = prime * result + ((capacity == null) ? 0 : capacity.hashCode());
-        result = prime * result + ((eventAddress == null) ? 0 : eventAddress.hashCode());
-        result = prime * result + ((eventDate == null) ? 0 : eventDate.hashCode());
-        result = prime * result + ((eventTime == null) ? 0 : eventTime.hashCode());
-        result = prime * result + ((duration == null) ? 0 : duration.hashCode());
-        result = prime * result + ((price == null) ? 0 : price.hashCode());
-        result = prime * result + ((accessType == null) ? 0 : accessType.hashCode());
-        result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
-        result = prime * result + ((comments == null) ? 0 : comments.hashCode());
-        return result;
+        return Objects.hash(eventId, title, subDescription, description, capacity, eventAddress, eventDate, eventTime,
+                duration, price, accessType, imageUrl, comments);
     }
-    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -166,68 +152,13 @@ public class EventEntity {
         if (getClass() != obj.getClass())
             return false;
         EventEntity other = (EventEntity) obj;
-        if (eventId == null) {
-            if (other.eventId != null)
-                return false;
-        } else if (!eventId.equals(other.eventId))
-            return false;
-        if (title == null) {
-            if (other.title != null)
-                return false;
-        } else if (!title.equals(other.title))
-            return false;
-        if (subDescription == null) {
-            if (other.subDescription != null)
-                return false;
-        } else if (!subDescription.equals(other.subDescription))
-            return false;
-        if (description == null) {
-            if (other.description != null)
-                return false;
-        } else if (!description.equals(other.description))
-            return false;
-        if (capacity == null) {
-            if (other.capacity != null)
-                return false;
-        } else if (!capacity.equals(other.capacity))
-            return false;
-        if (eventAddress == null) {
-            if (other.eventAddress != null)
-                return false;
-        } else if (!eventAddress.equals(other.eventAddress))
-            return false;
-        if (eventDate == null) {
-            if (other.eventDate != null)
-                return false;
-        } else if (!eventDate.equals(other.eventDate))
-            return false;
-        if (eventTime == null) {
-            if (other.eventTime != null)
-                return false;
-        } else if (!eventTime.equals(other.eventTime))
-            return false;
-        if (duration == null) {
-            if (other.duration != null)
-                return false;
-        } else if (!duration.equals(other.duration))
-            return false;
-        if (price == null) {
-            if (other.price != null)
-                return false;
-        } else if (!price.equals(other.price))
-            return false;
-        if (accessType != other.accessType)
-            return false;
-        if (imageUrl == null) {
-            if (other.imageUrl != null)
-                return false;
-        } else if (!imageUrl.equals(other.imageUrl))
-            return false;
-        if (comments == null) {
-            if (other.comments != null)
-                return false;
-        } else if (!comments.equals(other.comments))
-            return false;
-        return true;
+        return Objects.equals(eventId, other.eventId) && Objects.equals(title, other.title)
+                && Objects.equals(subDescription, other.subDescription)
+                && Objects.equals(description, other.description) && Objects.equals(capacity, other.capacity)
+                && Objects.equals(eventAddress, other.eventAddress) && Objects.equals(eventDate, other.eventDate)
+                && Objects.equals(eventTime, other.eventTime) && Objects.equals(duration, other.duration)
+                && Objects.equals(price, other.price) && accessType == other.accessType
+                && Objects.equals(imageUrl, other.imageUrl) && Objects.equals(comments, other.comments);
     }
+
 }
