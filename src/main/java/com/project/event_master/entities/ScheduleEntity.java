@@ -6,14 +6,27 @@ import java.util.Objects;
 
 import com.project.event_master.entities.enums.Status;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "schedules")
 public class ScheduleEntity {
 
     // ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleId;
+    
     private UserEntity organizer;
     private EventEntity event;
+
     private Instant createdAt;
     private Status status;
+    
     private ArrayList<UserEntity> participants;
 
     // BUILDER PATTERN

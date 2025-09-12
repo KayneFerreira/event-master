@@ -9,21 +9,43 @@ import java.util.Objects;
 
 import com.project.event_master.entities.enums.AccessType;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "events")
 public class EventEntity {
 
     // ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
+    
     private String title;
     private String subDescription;
     private String description;
+
     private Long capacity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
     private PhysicalAddress eventAddress;
+
     private LocalDate eventDate;
     private LocalTime eventTime;
     private Duration duration;
+
     private BigDecimal price;
     private AccessType accessType;
+    
     private String imageUrl;
+
     private ArrayList<Comments> comments;
 
     // BUILDER PATTERN

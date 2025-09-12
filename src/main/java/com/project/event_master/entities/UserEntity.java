@@ -6,18 +6,38 @@ import java.util.Objects;
 
 import com.project.event_master.entities.enums.AccessLevel;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "users")
 public class UserEntity {
 
     // ATTRIBUTES
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    
     private String name;
     private String cpf;
     private LocalDate birthDate;
+
     private String email;
     private String phoneNumber;
+    
     private String username;
     private String password;    // TEMP
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
     private PhysicalAddress address;
+
     private AccessLevel accessLevel;
     private Instant createdAt;
 
