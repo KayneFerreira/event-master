@@ -5,26 +5,67 @@ import java.util.Objects;
 public class Comments {
 
     // ATTRIBUTES
-    private Long id;
+    private Long commentsId;
     private String text;
     private UserEntity author;
     private EventEntity event;
-    
-    // CONSTRUCTORS
-    public Comments() {}
-    public Comments(Long id, String text, UserEntity author, EventEntity event) {
-        this.id = id;
-        this.text = text;
-        this.author = author;
-        this.event = event;
+
+    // BUILDER PATTERN
+    public static class Builder {
+        
+        private Long commentsId;
+        private String text;
+        private UserEntity author;
+        private EventEntity event;
+
+        public Builder commentsId(Long commentsId) {
+            this.commentsId = commentsId;
+            return this;
+        }
+
+        public Builder text(String text) {
+            this.text = text;
+            return this;
+        }
+
+        public Builder author(UserEntity author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder event(EventEntity event) {
+            this.event = event;
+            return this;
+        }
+
+        public Comments build() {
+            return new Comments(this);
+        }
     }
 
-    // GETTERS & SETTERS
-    public Long getId() {
-        return id;
+    // BUILDER CONSTRUCTORS
+    private Comments(Builder builder) {
+        this.commentsId = builder.commentsId;
+        this.text = builder.text;
+        this.author = builder.author;
+        this.event = builder.event;
     }
-    public void setId(Long id) {
-        this.id = id;
+    
+    // // DEFAULT CONSTRUCTORS
+    // public Comments() {}
+    // public Comments(Long id, String text, UserEntity author, EventEntity event) {
+    //     this.id = id;
+    //     this.text = text;
+    //     this.author = author;
+    //     this.event = event;
+    // }
+
+    // GETTERS & SETTERS
+    public Long getCommentsId() {
+        return commentsId;
+    }
+    public void setCommentsId(Long id) {
+        this.commentsId = id;
     }
     public String getText() {
         return text;
@@ -48,13 +89,13 @@ public class Comments {
     // TO STRING
     @Override
     public String toString() {
-        return "Comments [id=" + id + ", text=" + text + ", author=" + author + ", event=" + event + "]";
+        return "Comments [id=" + commentsId + ", text=" + text + ", author=" + author + ", event=" + event + "]";
     }
 
     // HASH CODE & EQUALS
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, author, event);
+        return Objects.hash(commentsId, text, author, event);
     }
     @Override
     public boolean equals(Object obj) {
@@ -65,7 +106,7 @@ public class Comments {
         if (getClass() != obj.getClass())
             return false;
         Comments other = (Comments) obj;
-        return Objects.equals(id, other.id) && Objects.equals(text, other.text) && Objects.equals(author, other.author)
+        return Objects.equals(commentsId, other.commentsId) && Objects.equals(text, other.text) && Objects.equals(author, other.author)
                 && Objects.equals(event, other.event);
     }
 

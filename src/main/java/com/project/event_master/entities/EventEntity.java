@@ -16,7 +16,7 @@ public class EventEntity {
     private String title;
     private String subDescription;
     private String description;
-    private Integer capacity;
+    private Long capacity;
     private PhysicalAddress eventAddress;
     private LocalDate eventDate;
     private LocalTime eventTime;
@@ -26,27 +26,131 @@ public class EventEntity {
     private String imageUrl;
     private ArrayList<Comments> comments;
 
-    // CONSTRUCTORS
-    public EventEntity() {}
-    public EventEntity(Long eventId, String title, String subDescription, String description, 
-            Integer capacity, PhysicalAddress eventAddress, LocalDate eventDate, 
-            LocalTime eventTime, Duration duration, BigDecimal price, AccessType accessType, 
-            String imageUrl, ArrayList<Comments> comments
-            ) {
-        this.eventId = eventId;
-        this.title = title;
-        this.subDescription = subDescription;
-        this.description = description;
-        this.capacity = capacity;
-        this.eventAddress = eventAddress;
-        this.eventDate = eventDate;
-        this.eventTime = eventTime;
-        this.duration = duration;
-        this.price = price;
-        this.accessType = accessType;
-        this.imageUrl = imageUrl;
-        this.comments = comments;
+    // BUILDER PATTERN
+    public static class Builder {
+
+        private Long eventId;
+        private String title;
+        private String subDescription;
+        private String description;
+        private Long capacity;
+        private PhysicalAddress eventAddress;
+        private LocalDate eventDate;
+        private LocalTime eventTime;
+        private Duration duration;
+        private BigDecimal price;
+        private AccessType accessType;
+        private String imageUrl;
+        private ArrayList<Comments> comments;
+
+        public Builder eventId(Long eventId) {
+            this.eventId = eventId;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder subDescription(String subDescription) {
+            this.subDescription = subDescription;
+            return this;
+        }
+
+        public Builder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder capacity(Long capacity) {
+            this.capacity = capacity;
+            return this;
+        }
+
+        public Builder eventAddress(PhysicalAddress eventAddress) {
+            this.eventAddress = eventAddress;
+            return this;
+        }
+
+        public Builder eventDate(LocalDate eventDate) {
+            this.eventDate = eventDate;
+            return this;
+        }
+
+        public Builder eventTime(LocalTime eventTime) {
+            this.eventTime = eventTime;
+            return this;
+        }
+
+        public Builder duration(Duration duration) {
+            this.duration = duration;
+            return this;
+        }
+
+        public Builder price(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder accessType(AccessType accessType) {
+            this.accessType = accessType;
+            return this;
+        }
+
+        public Builder imageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+            return this;
+        }
+
+        public Builder comments(ArrayList<Comments> comments) {
+            this.comments = comments;
+            return this;
+        }
+
+        public EventEntity build() {
+            return new EventEntity(this);
+        }
     }
+
+    // BUILDER CONSTRUCTORS
+    private EventEntity(Builder builder) {
+        this.eventId = builder.eventId;
+        this.title = builder.title;
+        this.subDescription = builder.subDescription;
+        this.description = builder.description;
+        this.capacity = builder.capacity;
+        this.eventAddress = builder.eventAddress;
+        this.eventDate = builder.eventDate;
+        this.eventTime = builder.eventTime;
+        this.duration = builder.duration;
+        this.price = builder.price;
+        this.accessType = builder.accessType;
+        this.imageUrl = builder.imageUrl;
+        this.comments = builder.comments;
+    }
+
+    // // DEFAULT CONSTRUCTORS
+    // public EventEntity() {}
+    // public EventEntity(Long eventId, String title, String subDescription, String description, 
+    //         Integer capacity, PhysicalAddress eventAddress, LocalDate eventDate, 
+    //         LocalTime eventTime, Duration duration, BigDecimal price, AccessType accessType, 
+    //         String imageUrl, ArrayList<Comments> comments
+    //         ) {
+    //     this.eventId = eventId;
+    //     this.title = title;
+    //     this.subDescription = subDescription;
+    //     this.description = description;
+    //     this.capacity = capacity;
+    //     this.eventAddress = eventAddress;
+    //     this.eventDate = eventDate;
+    //     this.eventTime = eventTime;
+    //     this.duration = duration;
+    //     this.price = price;
+    //     this.accessType = accessType;
+    //     this.imageUrl = imageUrl;
+    //     this.comments = comments;
+    // }
 
     // GETTERS & SETTERS
     public Long getEventId() {
@@ -73,10 +177,10 @@ public class EventEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public Integer getCapacity() {
+    public Long getCapacity() {
         return capacity;
     }
-    public void setCapacity(Integer capacity) {
+    public void setCapacity(Long capacity) {
         this.capacity = capacity;
     }
     public PhysicalAddress getEventAddress() {
