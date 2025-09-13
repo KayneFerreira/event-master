@@ -10,12 +10,12 @@ import java.util.Objects;
 import com.project.event_master.entities.enums.AccessType;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -33,7 +33,7 @@ public class EventEntity {
 
     private Long capacity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private PhysicalAddress eventAddress;
 
@@ -46,6 +46,7 @@ public class EventEntity {
     
     private String imageUrl;
 
+    @OneToMany(mappedBy = "event")
     private ArrayList<Comments> comments;
 
     // BUILDER PATTERN
@@ -153,7 +154,7 @@ public class EventEntity {
     }
 
     // // DEFAULT CONSTRUCTORS
-    // public EventEntity() {}
+    public EventEntity() {}
     // public EventEntity(Long eventId, String title, String subDescription, String description, 
     //         Integer capacity, PhysicalAddress eventAddress, LocalDate eventDate, 
     //         LocalTime eventTime, Duration duration, BigDecimal price, AccessType accessType, 

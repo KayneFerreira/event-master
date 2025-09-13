@@ -10,6 +10,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,12 +25,23 @@ public class ScheduleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long scheduleId;
     
+    @ManyToOne
+    @JoinColumn(name = "organizer_id")
     private UserEntity organizer;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id")
     private EventEntity event;
 
     private Instant createdAt;
     private Status status;
     
+    @ManyToMany
+    @JoinTable(
+        name = "schedule_participants",
+        joinColumns = @JoinColumn(name = "schedule_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private ArrayList<UserEntity> participants;
 
     // BUILDER PATTERN
@@ -75,7 +90,6 @@ public class ScheduleEntity {
     }
 
     // BUILDER CONSTRUCTORS
-    public ScheduleEntity() {}
     public ScheduleEntity(Builder builder) {
         this.scheduleId = builder.scheduleId;
         this.organizer = builder.organizer;
@@ -86,7 +100,7 @@ public class ScheduleEntity {
     }
 
     // // DEFAULT CONSTRUCTORS
-    // public ScheduleEntity() {}
+    public ScheduleEntity() {}
     // public ScheduleEntity(Long id, UserEntity organizer, EventEntity event, Instant createdAt, Status status,
     //         ArrayList<UserEntity> participants) {
     //     this.id = id;

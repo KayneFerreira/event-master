@@ -3,7 +3,6 @@ package com.project.event_master.entities;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,11 +21,11 @@ public class Comments {
     
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity author;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "event_id")
     private EventEntity event;
 
@@ -72,7 +71,7 @@ public class Comments {
     }
     
     // // DEFAULT CONSTRUCTORS
-    // public Comments() {}
+    public Comments() {}
     // public Comments(Long id, String text, UserEntity author, EventEntity event) {
     //     this.id = id;
     //     this.text = text;

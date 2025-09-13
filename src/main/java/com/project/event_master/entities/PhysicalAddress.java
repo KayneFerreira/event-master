@@ -73,7 +73,7 @@ public class PhysicalAddress {
             return this;
         }
 
-        public PhysicalAddress builder() {
+        public PhysicalAddress build() {
             return new PhysicalAddress(this);
         }
     }
@@ -90,7 +90,7 @@ public class PhysicalAddress {
     }
 
     // // DEFAULT CONSTRUCTORS
-    // public PhysicalAddress() {}
+    public PhysicalAddress() {}
     // public PhysicalAddress(Long id, String street, String addressComplement, String zipCode, String district,
     //         String city, State state) {
     //     this.id = id;

@@ -7,7 +7,6 @@ import java.util.Objects;
 import com.project.event_master.entities.enums.AccessLevel;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,7 +33,7 @@ public class UserEntity {
     private String username;
     private String password;    // TEMP
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private PhysicalAddress address;
 
@@ -132,7 +131,7 @@ public class UserEntity {
     }
 
     // // DEFAULT CONSTRUCTORS
-    // public UserEntity() {}
+    public UserEntity() {}
     // public UserEntity(Long userId, String name, String cpf, LocalDate birthDate, 
     //         String email, String phoneNumber, String username, String password, 
     //         PhysicalAddress address, AccessLevel accessLevel, Instant createdAt
