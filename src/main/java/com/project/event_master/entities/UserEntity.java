@@ -3,10 +3,12 @@ package com.project.event_master.entities;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,11 +19,12 @@ public class UserEntity {
     /*
         TODO:
             [ ] Fill attributes
-                - Create getters and setters
-                - Update constructors
-                - Update toString
-                - Update hashcode and equals
-            [ ] Create associations
+            [ ] Create getters and setters
+            [ ] Update constructors
+            [ ] Update toString
+            [ ] Update hashcode and equals
+            [x] Create associations
+                - Address
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +33,17 @@ public class UserEntity {
     private String name;
     private LocalDate birthDate;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private PhysicalAddress address;
+
     // CONSTRUCTORS
     public UserEntity() {}
 
-    public UserEntity(Long id, String name, LocalDate birthDate) {
+    public UserEntity(Long id, String name, LocalDate birthDate, PhysicalAddress address) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
+        this.address = address;
     }
 
     // GETTERS AND SETTER
@@ -64,10 +71,18 @@ public class UserEntity {
         this.birthDate = birthDate;
     }
 
+    public PhysicalAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(PhysicalAddress address) {
+        this.address = address;
+    }
+
     // TO STRING
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + "]";
+        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", address=" + address + "]";
     }
 
     // HASH CODE AND EQUALS
@@ -87,5 +102,5 @@ public class UserEntity {
         UserEntity other = (UserEntity) obj;
         return Objects.equals(id, other.id);
     }
-    
+
 }

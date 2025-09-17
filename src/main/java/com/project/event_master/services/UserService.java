@@ -40,6 +40,7 @@ public class UserService {
         UserEntity updateUser = repository.findById(id).get();
         updateUser.setName(user.getName());
         updateUser.setBirthDate(user.getBirthDate());
+        updateUser.setAddress(user.getAddress());
         return repository.save(updateUser);
     }
 
