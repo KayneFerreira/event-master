@@ -16,15 +16,15 @@ public class PhysicalAddress {
     /*
         TODO:
             [ ] Fill attributes
-            [ ] Create getters and setters
-            [ ] Update constructors
-            [ ] Update toString
-            [ ] Update hashcode and equals
+                - Create getters and setters
+                - Update constructors
+                - Update toString
+                - Update hashcode and equals
     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String city;
 
     // DEFAULT CONSTRUCTORS

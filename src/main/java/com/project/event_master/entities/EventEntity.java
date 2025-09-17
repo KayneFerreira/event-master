@@ -1,6 +1,5 @@
 package com.project.event_master.entities;
 
-import java.time.LocalDate;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
@@ -12,8 +11,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class UserEntity {
+@Table(name = "events")
+public class EventEntity {
 
     // ATTRIBUTES
     /*
@@ -25,28 +24,27 @@ public class UserEntity {
                 - Update hashcode and equals
             [x] Create associations
                 - Address
+                - Comments
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private LocalDate birthDate;
+    private String title;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
     // CONSTRUCTORS
-    public UserEntity() {}
+    public EventEntity() {}
 
-    public UserEntity(Long id, String name, LocalDate birthDate, PhysicalAddress address) {
+    public EventEntity(Long id, String title, PhysicalAddress address) {
         this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
+        this.title = title;
         this.address = address;
     }
 
-    // GETTERS AND SETTER
+    // GETTERS AND SETTERS
     public Long getId() {
         return id;
     }
@@ -55,20 +53,12 @@ public class UserEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public PhysicalAddress getAddress() {
@@ -82,7 +72,7 @@ public class UserEntity {
     // TO STRING
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", address=" + address + "]";
+        return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
     }
 
     // HASH CODE AND EQUALS
@@ -99,8 +89,8 @@ public class UserEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserEntity other = (UserEntity) obj;
+        EventEntity other = (EventEntity) obj;
         return Objects.equals(id, other.id);
     }
-
+    
 }
