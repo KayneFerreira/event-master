@@ -11,7 +11,7 @@ import com.project.event_master.repositories.EventRepository;
 @Service
 public class EventService {
 
-    // DEPENDENCY INJECTION
+    // DEPENDENCY INJECTION 
     private EventRepository repository;
 
     private EventService(EventRepository repository) {

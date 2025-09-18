@@ -15,7 +15,8 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class UserEntity {
 
-    // ATTRIBUTES
+    // ATTRIBUTES ------------------------------------------------------------------
+
     /*
         TODO:
             [ ] Fill attributes
@@ -36,7 +37,8 @@ public class UserEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
-    // CONSTRUCTORS
+    // CONSTRUCTORS ----------------------------------------------------------------
+
     public UserEntity() {}
 
     public UserEntity(Long id, String name, LocalDate birthDate, PhysicalAddress address) {
@@ -46,7 +48,8 @@ public class UserEntity {
         this.address = address;
     }
 
-    // GETTERS AND SETTER
+    // GETTERS AND SETTER ----------------------------------------------------------
+
     public Long getId() {
         return id;
     }
@@ -79,13 +82,15 @@ public class UserEntity {
         this.address = address;
     }
 
-    // TO STRING
+    // TO STRING -------------------------------------------------------------------
+
     @Override
     public String toString() {
         return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS
+    // HASH CODE AND EQUALS --------------------------------------------------------
+    
     @Override
     public int hashCode() {
         return Objects.hash(id);

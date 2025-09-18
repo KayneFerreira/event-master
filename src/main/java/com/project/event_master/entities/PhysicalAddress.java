@@ -12,7 +12,8 @@ import jakarta.persistence.Table;
 @Table(name = "address")
 public class PhysicalAddress {
 
-    // ATTRIBUTES
+    // ATTRIBUTES ------------------------------------------------------------------
+
     /*
         TODO:
             [ ] Fill attributes
@@ -27,7 +28,8 @@ public class PhysicalAddress {
 
     private String city;
 
-    // DEFAULT CONSTRUCTORS
+    // DEFAULT CONSTRUCTORS --------------------------------------------------------
+
     public PhysicalAddress() {}
 
     public PhysicalAddress(Long id, String city) {
@@ -35,7 +37,8 @@ public class PhysicalAddress {
         this.city = city;
     }
 
-    // GETTERS AND SETTERS
+    // GETTERS AND SETTERS ---------------------------------------------------------
+
     public Long getId() {
         return id;
     }
@@ -52,13 +55,15 @@ public class PhysicalAddress {
         this.city = city;
     }
 
-    // TO STRING
+    // TO STRING -------------------------------------------------------------------
+
     @Override
     public String toString() {
         return "PhysicalAddress [id=" + id + ", city=" + city + "]";
     }
 
-    // HASHCODE AND EQUALS
+    // HASHCODE AND EQUALS ---------------------------------------------------------
+    
     @Override
     public int hashCode() {
         return Objects.hash(id);

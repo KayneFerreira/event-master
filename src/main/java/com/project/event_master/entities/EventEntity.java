@@ -1,20 +1,24 @@
 package com.project.event_master.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "events")
 public class EventEntity {
 
-    // ATTRIBUTES
+    // ATTRIBUTES ------------------------------------------------------------------
     /*
         TODO:
             [ ] Fill attributes
@@ -35,7 +39,15 @@ public class EventEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
-    // CONSTRUCTORS
+    @OneToMany(
+        mappedBy = "event", 
+        cascade = CascadeType.ALL, 
+        fetch = FetchType.LAZY
+        )
+    private List<Comments> comments = new ArrayList<>();
+
+    // DEFAULT CONSTRUCTORS --------------------------------------------------------
+
     public EventEntity() {}
 
     public EventEntity(Long id, String title, PhysicalAddress address) {
@@ -44,7 +56,8 @@ public class EventEntity {
         this.address = address;
     }
 
-    // GETTERS AND SETTERS
+    // GETTERS AND SETTERS----------------------------------------------------------
+
     public Long getId() {
         return id;
     }
@@ -69,13 +82,19 @@ public class EventEntity {
         this.address = address;
     }
 
-    // TO STRING
+    public List<Comments> getComments() {
+        return comments;
+    }
+
+    // TO STRING -------------------------------------------------------------------
+
     @Override
     public String toString() {
         return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS
+    // HASH CODE AND EQUALS---------------------------------------------------------
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
@@ -92,5 +111,7 @@ public class EventEntity {
         EventEntity other = (EventEntity) obj;
         return Objects.equals(id, other.id);
     }
+
+    
     
 }
