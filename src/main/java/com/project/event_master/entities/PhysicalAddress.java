@@ -32,11 +32,6 @@ public class PhysicalAddress {
 
     public PhysicalAddress() {}
 
-    public PhysicalAddress(Long id, String city) {
-        this.id = id;
-        this.city = city;
-    }
-
     // GETTERS AND SETTERS ---------------------------------------------------------
 
     public Long getId() {

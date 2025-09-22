@@ -33,6 +33,7 @@ public class CommentService {
                     .map(event -> {
                         comment.setAuthor(user);
                         comment.setEvent(event);
+                        comment.setCreatedAt();
                         return commentRepository.save(comment);
                         }
                     ).orElseThrow(() -> new RecordNotFoundException(eventId));
@@ -59,7 +60,7 @@ public class CommentService {
                                 updateComment.setText(comment.getText());
                                 updateComment.setAuthor(user);
                                 updateComment.setEvent(event);
-                                updateComment.setCreatedAt(comment.getCreatedAt());
+                                updateComment.setEditedAt();
                                 return commentRepository.save(updateComment);
                             }
                         ).orElseThrow(() -> new RecordNotFoundException(commentId));

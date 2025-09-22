@@ -41,13 +41,6 @@ public class UserEntity {
 
     public UserEntity() {}
 
-    public UserEntity(Long id, String name, LocalDate birthDate, PhysicalAddress address) {
-        this.id = id;
-        this.name = name;
-        this.birthDate = birthDate;
-        this.address = address;
-    }
-
     // GETTERS AND SETTER ----------------------------------------------------------
 
     public Long getId() {

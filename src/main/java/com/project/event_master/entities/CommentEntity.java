@@ -33,17 +33,11 @@ public class CommentEntity {
 
     private Instant createdAt;
 
-    // DEFAULT CONSTRUCTORS --------------------------------------------------------
+    private Instant editedAt;
+
+    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
     public CommentEntity() {}
-
-    public CommentEntity(Long id, String text, UserEntity author, EventEntity event) {
-        this.id = id;
-        this.text = text;
-        this.author = author;
-        this.event = event;
-        this.createdAt = Instant.now();
-    }
 
     // GETTERS AND SETTERS ---------------------------------------------------------
 
@@ -83,16 +77,26 @@ public class CommentEntity {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt() {
         this.createdAt = Instant.now();
+    }
+    
+    public Instant getEditedAt() {
+        return editedAt;
+    }
+
+    public void setEditedAt() {
+        this.editedAt = Instant.now();
     }
 
     // TO STRING -------------------------------------------------------------------
 
+
+
     @Override
     public String toString() {
         return "CommentEntity [id=" + id + ", text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
-                + createdAt + "]";
+                + createdAt + "edited=" + editedAt + "]";
     }
 
     // HASH CODE AND EQUALS --------------------------------------------------------

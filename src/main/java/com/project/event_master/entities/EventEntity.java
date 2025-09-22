@@ -53,12 +53,6 @@ public class EventEntity {
 
     public EventEntity() {}
 
-    public EventEntity(Long id, String title, PhysicalAddress address) {
-        this.id = id;
-        this.title = title;
-        this.address = address;
-    }
-
     // GETTERS AND SETTERS----------------------------------------------------------
 
     public Long getId() {
