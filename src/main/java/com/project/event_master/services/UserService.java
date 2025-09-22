@@ -1,12 +1,12 @@
 package com.project.event_master.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.project.event_master.entities.UserEntity;
 import com.project.event_master.repositories.UserRepository;
+import com.project.event_master.services.exceptions.RecordNotFoundException;
 
 @Service
 public class UserService {
@@ -26,23 +26,24 @@ public class UserService {
         return repository.findAll();
     }
 
-    // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    public Optional<UserEntity> findUserById(Long id) {
-        return repository.findById(id);
+    public UserEntity findUserById(Long id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    // WARN: MAY NEED CHANGES
     public UserEntity updateUser(UserEntity user, Long id) {
-        UserEntity updateUser = repository.findById(id).get();
-        updateUser.setName(user.getName());
-        updateUser.setBirthDate(user.getBirthDate());
-        updateUser.setAddress(user.getAddress());
-        return repository.save(updateUser);
+        return repository.findById(id)
+            .map(updateUser -> {
+                updateUser.setName(user.getName());
+                updateUser.setBirthDate(user.getBirthDate());
+                updateUser.setAddress(user.getAddress());
+                return repository.save(updateUser);
+            }
+        ).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
     public void deleteUser(Long id) {
-        repository.deleteById(id);
+        repository.delete(findUserById(id));
     }
 
 }

@@ -1,7 +1,6 @@
 package com.project.event_master.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,7 +44,7 @@ public class UserController {
     @GetMapping("/{id}")
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
-    public Optional<UserEntity> findUserById(@PathVariable Long id) {
+    public UserEntity findUserById(@PathVariable Long id) {
         return service.findUserById(id);
     }
 

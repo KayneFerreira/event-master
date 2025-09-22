@@ -1,12 +1,12 @@
 package com.project.event_master.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.project.event_master.entities.EventEntity;
 import com.project.event_master.repositories.EventRepository;
+import com.project.event_master.services.exceptions.RecordNotFoundException;
 
 @Service
 public class EventService {
@@ -26,22 +26,23 @@ public class EventService {
         return repository.findAll();
     }
 
-    // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    public Optional<EventEntity> findEventById(Long id) {
-        return repository.findById(id);
+    public EventEntity findEventById(Long id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    // WARN: MAY NEED CHANGES
     public EventEntity updateEvent(EventEntity event, Long id) {
-        EventEntity updateEvent = repository.findById(id).get();
-        updateEvent.setTitle(event.getTitle());
-        updateEvent.setAddress(event.getAddress());
-        return repository.save(updateEvent);
+        return repository.findById(id)
+            .map(updateEvent -> {
+                updateEvent.setTitle(event.getTitle());
+                updateEvent.setAddress(event.getAddress());
+                return repository.save(updateEvent);
+            }
+        ).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
-    // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
     public void deleteEvent(Long id) {
-        repository.deleteById(id);
+        repository.delete(findEventById(id));
     }
 
 }
