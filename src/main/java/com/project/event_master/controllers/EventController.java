@@ -29,14 +29,12 @@ public class EventController {
         this.service = service;
     }
 
-    /** Create new event */
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public EventEntity createNewEvent(@RequestBody EventEntity event) {
         return service.createNewEvent(event);
     }
 
-    /** List all existing events */
     @GetMapping
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
@@ -44,7 +42,6 @@ public class EventController {
         return service.findAllEvents();
     }
 
-    /** Find event by id */
     @GetMapping("/{id}")
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
@@ -52,14 +49,12 @@ public class EventController {
         return service.findEventById(id);
     }
 
-    /** Update existing event */
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public EventEntity updateEvent(@RequestBody EventEntity event, @PathVariable Long id) {
         return service.updateEvent(event, id);
     }
 
-    /** Delete existing event by id */
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteEvent(@PathVariable Long id) {

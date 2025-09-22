@@ -1,3 +1,0 @@
-[main b21d255] Project updated: - Created PhysicalAddress entity; - Created ManyToOne association UserEntity
- 3 files changed, 103 insertions(+), 8 deletions(-)
- create mode 100644 src/main/java/com/project/event_master/entities/PhysicalAddress.java

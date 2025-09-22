@@ -29,14 +29,12 @@ public class UserController {
         this.service = service;
     }
 
-    /** Create new user */
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public UserEntity createNewUser(@RequestBody UserEntity user) {
         return service.createNewUser(user);
     }
 
-    /** List all existing users  */
     @GetMapping
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
@@ -44,7 +42,6 @@ public class UserController {
         return service.findAllUsers();
     }
 
-    /** Find user by id */
     @GetMapping("/{id}")
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
@@ -52,14 +49,12 @@ public class UserController {
         return service.findUserById(id);
     }
 
-    /** Update existing user */
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
     public UserEntity updateUser(@RequestBody UserEntity user, @PathVariable Long id) {
         return service.updateUser(user, id);
     }
 
-    /** Delete user by id */
     @DeleteMapping("/{id}")
     @ResponseStatus(code = HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable Long id) {

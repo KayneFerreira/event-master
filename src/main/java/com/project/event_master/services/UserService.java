@@ -18,24 +18,20 @@ public class UserService {
         this.repository = repository;
     }
 
-    /** Create new user */
     public UserEntity createNewUser(UserEntity user) {
         return repository.save(user);
     }
 
-    /** List all existing users  */
     public List<UserEntity> findAllUsers() {
         return repository.findAll();
     }
 
     // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    /** Find user by id */
     public Optional<UserEntity> findUserById(Long id) {
         return repository.findById(id);
     }
 
     // WARN: MAY NEED CHANGES
-    /** Update existing user */
     public UserEntity updateUser(UserEntity user, Long id) {
         UserEntity updateUser = repository.findById(id).get();
         updateUser.setName(user.getName());
@@ -45,7 +41,6 @@ public class UserService {
     }
 
     // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    /** Delete user by id */
     public void deleteUser(Long id) {
         repository.deleteById(id);
     }

@@ -18,24 +18,20 @@ public class EventService {
         this.repository = repository;
     }
 
-    /** Create new event */
     public EventEntity createNewEvent(EventEntity event) {
         return repository.save(event);
     }
 
-    /** List all existing events */
     public List<EventEntity> findAllEvents() {
         return repository.findAll();
     }
 
     // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    /** Find event by id */
     public Optional<EventEntity> findEventById(Long id) {
         return repository.findById(id);
     }
 
     // WARN: MAY NEED CHANGES
-    /** Update existing event */
     public EventEntity updateEvent(EventEntity event, Long id) {
         EventEntity updateEvent = repository.findById(id).get();
         updateEvent.setTitle(event.getTitle());
@@ -44,7 +40,6 @@ public class EventService {
     }
 
     // CHANGE -> MUST THROW EXCEPTION (CREATE CUSTOM EXCEPTION)
-    /** Delete existing event by id */
     public void deleteEvent(Long id) {
         repository.deleteById(id);
     }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -44,7 +46,8 @@ public class EventEntity {
         cascade = CascadeType.ALL, 
         fetch = FetchType.LAZY
         )
-    private List<Comments> comments = new ArrayList<>();
+    @JsonManagedReference
+    private List<CommentEntity> comments = new ArrayList<>();
 
     // DEFAULT CONSTRUCTORS --------------------------------------------------------
 
@@ -82,7 +85,7 @@ public class EventEntity {
         this.address = address;
     }
 
-    public List<Comments> getComments() {
+    public List<CommentEntity> getComments() {
         return comments;
     }
 
@@ -111,7 +114,5 @@ public class EventEntity {
         EventEntity other = (EventEntity) obj;
         return Objects.equals(id, other.id);
     }
-
-    
     
 }
