@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.event_master.entities.CommentEntity;
-import com.project.event_master.services.CommentsService;
+import com.project.event_master.services.CommentService;
 
 @RestController
 @RequestMapping("/api/users/{userId}/events/{eventId}/comments")
 public class CommentController {
 
     // DEPENDENCY INJECTION
-    private CommentsService service;
+    private CommentService service;
 
-    private CommentController(CommentsService service) {
+    private CommentController(CommentService service) {
         this.service = service;
     }
 
