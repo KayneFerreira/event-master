@@ -21,9 +21,7 @@ public class UserEntity {
         TODO:
             [ ] Fill attributes
                 - Create getters and setters
-                - Update constructors
                 - Update toString
-                - Update hashcode and equals
             [x] Create associations
                 - Address
      */
@@ -33,11 +31,12 @@ public class UserEntity {
 
     private String name;
     private LocalDate birthDate;
+    private String cpf;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
-    // CONSTRUCTORS ----------------------------------------------------------------
+    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
     public UserEntity() {}
 
@@ -67,6 +66,14 @@ public class UserEntity {
         this.birthDate = birthDate;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
     public PhysicalAddress getAddress() {
         return address;
     }
@@ -79,7 +86,8 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", address=" + address + "]";
+        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + "cpf=" + cpf + ", address=" 
+                + address + "]";
     }
 
     // HASH CODE AND EQUALS --------------------------------------------------------

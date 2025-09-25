@@ -25,9 +25,7 @@ public class EventEntity {
         TODO:
             [ ] Fill attributes
                 - Create getters and setters
-                - Update constructors
                 - Update toString
-                - Update hashcode and equals
             [x] Create associations
                 - Address
                 - Comments
@@ -49,7 +47,7 @@ public class EventEntity {
     @JsonManagedReference
     private List<CommentEntity> comments = new ArrayList<>();
 
-    // DEFAULT CONSTRUCTORS --------------------------------------------------------
+    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
     public EventEntity() {}
 

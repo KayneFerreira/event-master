@@ -28,7 +28,7 @@ public class EventService {
 
     public EventEntity findEventById(Long id) {
         return repository.findById(id)
-            .orElseThrow(() -> new RecordNotFoundException(id));
+            .orElseThrow(() -> new RecordNotFoundException("Evento", id));
     }
 
     public EventEntity updateEvent(EventEntity event, Long id) {
@@ -38,7 +38,7 @@ public class EventService {
                 updateEvent.setAddress(event.getAddress());
                 return repository.save(updateEvent);
             }
-        ).orElseThrow(() -> new RecordNotFoundException(id));
+        ).orElseThrow(() -> new RecordNotFoundException("Evento", id));
     }
 
     public void deleteEvent(Long id) {

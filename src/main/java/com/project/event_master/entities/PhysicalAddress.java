@@ -18,9 +18,7 @@ public class PhysicalAddress {
         TODO:
             [ ] Fill attributes
                 - Create getters and setters
-                - Update constructors
                 - Update toString
-                - Update hashcode and equals
     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +26,7 @@ public class PhysicalAddress {
 
     private String city;
 
-    // DEFAULT CONSTRUCTORS --------------------------------------------------------
+    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
     public PhysicalAddress() {}
 

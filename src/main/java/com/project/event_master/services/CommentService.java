@@ -36,9 +36,9 @@ public class CommentService {
                         comment.setCreatedAt();
                         return commentRepository.save(comment);
                         }
-                    ).orElseThrow(() -> new RecordNotFoundException(eventId));
+                    ).orElseThrow(() -> new RecordNotFoundException("Evento", eventId));
                 }
-            ).orElseThrow(() -> new RecordNotFoundException(userId));
+            ).orElseThrow(() -> new RecordNotFoundException("Usuário", userId));
     }
 
     public List<CommentEntity> findAllCommentsByEventId(Long eventId) {
@@ -47,7 +47,7 @@ public class CommentService {
 
     public CommentEntity findCommentById(Long id) {
         return commentRepository.findById(id)
-            .orElseThrow(() -> new RecordNotFoundException(id));
+            .orElseThrow(() -> new RecordNotFoundException("Comentário", id));
     }
 
     public CommentEntity updateComment(CommentEntity comment, Long commentId, Long userId, Long eventId) {
@@ -63,11 +63,11 @@ public class CommentService {
                                 updateComment.setEditedAt();
                                 return commentRepository.save(updateComment);
                             }
-                        ).orElseThrow(() -> new RecordNotFoundException(commentId));
+                        ).orElseThrow(() -> new RecordNotFoundException("Comentário", commentId));
                     }
-                ).orElseThrow(() -> new RecordNotFoundException(eventId));
+                ).orElseThrow(() -> new RecordNotFoundException("Evento", eventId));
             }
-        ).orElseThrow(() -> new RecordNotFoundException(userId));
+        ).orElseThrow(() -> new RecordNotFoundException("Usuário", userId));
     }
 
     public void deleteComment(Long id) {
