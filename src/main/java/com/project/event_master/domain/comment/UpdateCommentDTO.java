@@ -66,8 +66,6 @@ public class UpdateCommentDTO {
 
     // TO STRING -------------------------------------------------------------------
 
-
-
     @Override
     public String toString() {
         return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event + ", createdAt="

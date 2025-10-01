@@ -17,63 +17,58 @@ public class UserResponseDTO {
             [x] Create associations
                 - Address
      */
-    private String name;
-    private LocalDate birthDate;
-    private String cpf;
+    private final Long id;
+    private final String name;
+    private final LocalDate birthDate;
+    private final String cpf;
 
-    private PhysicalAddress address;
+    private final PhysicalAddress address;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTOR -----------------------------------------------------------------
 
-    public UserResponseDTO() {}
+    public UserResponseDTO(Long id, String name, LocalDate birthDate, String cpf, PhysicalAddress address) {
+        this.id = id;
+        this.name = name;
+        this.birthDate = birthDate;
+        this.cpf = cpf;
+        this.address = address;
+    }
 
-    // GETTERS AND SETTERS ---------------------------------------------------------
+    // GETTERS ---------------------------------------------------------------------
+
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public PhysicalAddress getAddress() {
         return address;
     }
 
-    public void setAddress(PhysicalAddress address) {
-        this.address = address;
-    }
-
     // TO STRING -------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
-                + address + "]";
+        return "UserResponseDTO [id = " + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf 
+                + ", address=" + address + "]";
     }
-
-     // HASH CODE AND EQUALS --------------------------------------------------------
+    
+    // HASH CODE AND EQUALS --------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, birthDate, cpf, address);
+        return Objects.hash(id, name, birthDate, cpf, address);
     }
 
     @Override
@@ -85,8 +80,9 @@ public class UserResponseDTO {
         if (getClass() != obj.getClass())
             return false;
         UserResponseDTO other = (UserResponseDTO) obj;
-        return Objects.equals(name, other.name) && Objects.equals(birthDate, other.birthDate)
-                && Objects.equals(cpf, other.cpf) && Objects.equals(address, other.address);
+        return Objects.equals(id, other.id) && Objects.equals(name, other.name)
+                && Objects.equals(birthDate, other.birthDate) && Objects.equals(cpf, other.cpf)
+                && Objects.equals(address, other.address);
     }
 
 }

@@ -19,6 +19,8 @@ public class EventResponseDTO {
                 - Address
                 - Comments
      */
+    private Long id;
+
     private String title;
 
     private PhysicalAddress address;
@@ -31,20 +33,16 @@ public class EventResponseDTO {
 
     // GETTERS AND SETTERS----------------------------------------------------------
 
+    public Long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public PhysicalAddress getAddress() {
         return address;
-    }
-
-    public void setAddress(PhysicalAddress address) {
-        this.address = address;
     }
 
     public List<CommentEntity> getComments() {
@@ -55,14 +53,14 @@ public class EventResponseDTO {
 
     @Override
     public String toString() {
-        return "EventEntity [title=" + title + ", address=" + address + "]";
+        return "EventEntity [id = " + id + ", title=" + title + ", address=" + address + "]";
     }
 
     // HASH CODE AND EQUALS---------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, address, comments);
+        return Objects.hash(id, title, address, comments);
     }
 
     @Override
@@ -74,8 +72,8 @@ public class EventResponseDTO {
         if (getClass() != obj.getClass())
             return false;
         EventResponseDTO other = (EventResponseDTO) obj;
-        return Objects.equals(title, other.title) && Objects.equals(address, other.address)
-                && Objects.equals(comments, other.comments);
+        return Objects.equals(id, other.id) && Objects.equals(title, other.title)
+                && Objects.equals(address, other.address) && Objects.equals(comments, other.comments);
     }
 
 }

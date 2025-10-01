@@ -65,7 +65,7 @@ public class CreateUserDTO {
 
     @Override
     public String toString() {
-        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
+        return "CreateUserDTO [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
                 + address + "]";
     }
 

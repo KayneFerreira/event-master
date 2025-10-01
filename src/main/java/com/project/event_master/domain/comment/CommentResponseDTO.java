@@ -10,6 +10,8 @@ public class CommentResponseDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
 
+    private Long id;
+
     private String text;
 
     private UserEntity author;
@@ -24,53 +26,35 @@ public class CommentResponseDTO {
 
     // GETTERS AND SETTERS ---------------------------------------------------------
 
-    public String getText() {
-        return text;
+    public Long getId() {
+        return id;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getText() {
+        return text;
     }
 
     public UserEntity getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserEntity author) {
-        this.author = author;
-    }
-
     public EventEntity getEvent() {
         return event;
     }
 
-    public void setEvent(EventEntity event) {
-        this.event = event;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt() {
-        this.createdAt = Instant.now();
     }
     
     public Instant getEditedAt() {
         return editedAt;
     }
 
-    public void setEditedAt() {
-        this.editedAt = Instant.now();
-    }
-
     // TO STRING -------------------------------------------------------------------
-
-
 
     @Override
     public String toString() {
-        return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
+        return "CommentEntity [id = " + id + ", text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
                 + createdAt + "edited=" + editedAt + "]";
     }
 
@@ -78,7 +62,7 @@ public class CommentResponseDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, author, event, createdAt, editedAt);
+        return Objects.hash(id, text, author, event, createdAt, editedAt);
     }
 
     @Override
@@ -90,7 +74,7 @@ public class CommentResponseDTO {
         if (getClass() != obj.getClass())
             return false;
         CommentResponseDTO other = (CommentResponseDTO) obj;
-        return Objects.equals(text, other.text) && Objects.equals(author, other.author)
+        return Objects.equals(id, other.id) && Objects.equals(text, other.text) && Objects.equals(author, other.author)
                 && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt)
                 && Objects.equals(editedAt, other.editedAt);
     }
