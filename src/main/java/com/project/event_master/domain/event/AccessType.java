@@ -1,4 +1,4 @@
-package com.project.event_master.entities.enums;
+package com.project.event_master.domain.event;
 
 public enum AccessType {
 

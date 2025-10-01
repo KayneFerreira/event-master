@@ -1,10 +1,10 @@
-package com.project.event_master.entities.enums;
+package com.project.event_master.domain.user;
 
 public enum AccessLevel {
 
-    USUARIO(1, "Usuário"),
-    MODERADOR(2, "Moderador"),
-    ADMINISTRADOR(3, "Administrador");
+    USER(1, "Usuário"),
+    MOD(2, "Moderador"),
+    ADMIN(3, "Administrador");
 
     private int code;
     private String text;

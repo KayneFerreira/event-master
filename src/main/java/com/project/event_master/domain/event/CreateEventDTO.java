@@ -1,24 +1,13 @@
-package com.project.event_master.entities;
+package com.project.event_master.domain.event;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.project.event_master.domain.address.PhysicalAddress;
+import com.project.event_master.domain.comment.CommentEntity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "events")
-public class EventEntity {
+public class CreateEventDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
     /*
@@ -30,36 +19,17 @@ public class EventEntity {
                 - Address
                 - Comments
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
-    @OneToMany(
-        mappedBy = "event", 
-        cascade = CascadeType.ALL, 
-        fetch = FetchType.LAZY
-        )
-    @JsonManagedReference
     private List<CommentEntity> comments = new ArrayList<>();
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public EventEntity() {}
+    public CreateEventDTO() {}
 
     // GETTERS AND SETTERS----------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -85,14 +55,14 @@ public class EventEntity {
 
     @Override
     public String toString() {
-        return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
+        return "EventEntity [title=" + title + ", address=" + address + "]";
     }
 
     // HASH CODE AND EQUALS---------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(title, address, comments);
     }
 
     @Override
@@ -103,8 +73,9 @@ public class EventEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        EventEntity other = (EventEntity) obj;
-        return Objects.equals(id, other.id);
+        CreateEventDTO other = (CreateEventDTO) obj;
+        return Objects.equals(title, other.title) && Objects.equals(address, other.address)
+                && Objects.equals(comments, other.comments);
     }
-    
+
 }

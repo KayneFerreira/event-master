@@ -1,19 +1,11 @@
-package com.project.event_master.entities;
+package com.project.event_master.domain.user;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.project.event_master.domain.address.PhysicalAddress;
 
-@Entity
-@Table(name = "users")
-public class UserEntity {
+public class UserResponseDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
 
@@ -25,30 +17,17 @@ public class UserEntity {
             [x] Create associations
                 - Address
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     private String name;
     private LocalDate birthDate;
     private String cpf;
 
-    @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public UserEntity() {}
+    public UserResponseDTO() {}
 
-    // GETTERS AND SETTER ----------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // GETTERS AND SETTERS ---------------------------------------------------------
 
     public String getName() {
         return name;
@@ -73,7 +52,7 @@ public class UserEntity {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
     public PhysicalAddress getAddress() {
         return address;
     }
@@ -86,15 +65,15 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + "cpf=" + cpf + ", address=" 
+        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
                 + address + "]";
     }
 
-    // HASH CODE AND EQUALS --------------------------------------------------------
-    
+     // HASH CODE AND EQUALS --------------------------------------------------------
+
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(name, birthDate, cpf, address);
     }
 
     @Override
@@ -105,8 +84,9 @@ public class UserEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserEntity other = (UserEntity) obj;
-        return Objects.equals(id, other.id);
+        UserResponseDTO other = (UserResponseDTO) obj;
+        return Objects.equals(name, other.name) && Objects.equals(birthDate, other.birthDate)
+                && Objects.equals(cpf, other.cpf) && Objects.equals(address, other.address);
     }
 
 }

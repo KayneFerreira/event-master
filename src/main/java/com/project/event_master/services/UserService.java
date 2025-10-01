@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.entities.UserEntity;
+import com.project.event_master.domain.user.UserEntity;
 import com.project.event_master.repositories.UserRepository;
 import com.project.event_master.services.exceptions.RecordNotFoundException;
 import com.project.event_master.services.exceptions.ValidationException;

@@ -2,7 +2,7 @@ package com.project.event_master.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.project.event_master.entities.EventEntity;
+import com.project.event_master.domain.event.EventEntity;
 
 public interface EventRepository extends JpaRepository<EventEntity, Long> {
 

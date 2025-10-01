@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.entities.UserEntity;
+import com.project.event_master.domain.user.UserEntity;
 import com.project.event_master.services.UserService;
 
 @RestController

@@ -43,21 +43,16 @@ public class CPFValidation {
     }
 
     public boolean validateCPF(String cpf) {
-        if (!validateOnlyNumbers(cpf)) {
+        if (!validateOnlyNumbers(cpf)) 
             throw new ValidationException("CPF inválido. Contém caracteres não numéricos!"); 
-        }
-        if (!validateSize(cpf)) { 
+        if (!validateSize(cpf)) 
             throw new ValidationException("CPF inválido. Número não contém 11 digitos!"); 
-        }
-        if (!validateRepeatedNumbers(cpf)) {
+        if (!validateRepeatedNumbers(cpf)) 
             throw new ValidationException("CPF inválido. Todos os números são repetidos!"); 
-        }
-        if (!validateDigits(cpf, 1)) {
+        if (!validateDigits(cpf, 1)) 
             throw new ValidationException("CPF inválido. Primeiro digito invalidado!");
-        }
-        if (!validateDigits(cpf, 2)) {
+        if (!validateDigits(cpf, 2)) 
             throw new ValidationException("CPF inválido. Segundo digito invalidado!");
-        }
         return true;
     }
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.entities.EventEntity;
+import com.project.event_master.domain.event.EventEntity;
 import com.project.event_master.repositories.EventRepository;
 import com.project.event_master.services.exceptions.RecordNotFoundException;
 

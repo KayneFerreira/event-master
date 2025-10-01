@@ -1,4 +1,4 @@
-package com.project.event_master.entities;
+package com.project.event_master.domain.address;
 
 import java.util.Objects;
 
