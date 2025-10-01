@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.domain.comment.CommentEntity;
+import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.exceptions.RecordNotFoundException;
 import com.project.event_master.repositories.CommentRepository;
 import com.project.event_master.repositories.EventRepository;
 import com.project.event_master.repositories.UserRepository;
-import com.project.event_master.services.exceptions.RecordNotFoundException;
 
 @Service
 public class CommentService {

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.domain.user.CreateUserDTO;
-import com.project.event_master.domain.user.UpdateUserDTO;
-import com.project.event_master.domain.user.UserResponseDTO;
+import com.project.event_master.dtos.user.CreateUserDTO;
+import com.project.event_master.dtos.user.UpdateUserDTO;
+import com.project.event_master.dtos.user.UserResponseDTO;
 import com.project.event_master.services.UserService;
 
 @RestController

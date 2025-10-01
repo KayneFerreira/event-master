@@ -1,11 +1,9 @@
-package com.project.event_master.domain.comment;
+package com.project.event_master.domain;
 
 import java.time.Instant;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.project.event_master.domain.event.EventEntity;
-import com.project.event_master.domain.user.UserEntity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

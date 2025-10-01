@@ -1,8 +1,8 @@
-package com.project.event_master.services.validation;
+package com.project.event_master.validation;
 
 import org.springframework.stereotype.Component;
 
-import com.project.event_master.services.exceptions.ValidationException;
+import com.project.event_master.exceptions.ValidationException;
 
 @Component
 public class CPFValidation {

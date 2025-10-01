@@ -1,4 +1,4 @@
-package com.project.event_master.services.util;
+package com.project.event_master.mappers;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.NullValuePropertyMappingStrategy;

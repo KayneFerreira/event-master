@@ -1,9 +1,9 @@
-package com.project.event_master.domain.user;
+package com.project.event_master.dtos.user;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.project.event_master.domain.address.PhysicalAddress;
+import com.project.event_master.domain.PhysicalAddress;
 
 public class UserResponseDTO {
 

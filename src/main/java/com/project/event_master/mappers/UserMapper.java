@@ -1,4 +1,4 @@
-package com.project.event_master.services.util;
+package com.project.event_master.mappers;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
-import com.project.event_master.domain.user.CreateUserDTO;
-import com.project.event_master.domain.user.UpdateUserDTO;
-import com.project.event_master.domain.user.UserEntity;
-import com.project.event_master.domain.user.UserResponseDTO;
+import com.project.event_master.domain.UserEntity;
+import com.project.event_master.dtos.user.CreateUserDTO;
+import com.project.event_master.dtos.user.UpdateUserDTO;
+import com.project.event_master.dtos.user.UserResponseDTO;
 
 @Mapper(config = BaseMapperConfig.class)
 public interface UserMapper {

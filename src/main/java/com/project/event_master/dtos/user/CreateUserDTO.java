@@ -1,11 +1,11 @@
-package com.project.event_master.domain.user;
+package com.project.event_master.dtos.user;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.project.event_master.domain.address.PhysicalAddress;
+import com.project.event_master.domain.PhysicalAddress;
 
-public class UpdateUserDTO {
+public class CreateUserDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ public class UpdateUserDTO {
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public UpdateUserDTO() {}
+    public CreateUserDTO() {}
 
     // GETTERS AND SETTERS ---------------------------------------------------------
 
@@ -65,7 +65,7 @@ public class UpdateUserDTO {
 
     @Override
     public String toString() {
-        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
+        return "CreateUserDTO [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
                 + address + "]";
     }
 
@@ -84,7 +84,7 @@ public class UpdateUserDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UpdateUserDTO other = (UpdateUserDTO) obj;
+        CreateUserDTO other = (CreateUserDTO) obj;
         return Objects.equals(name, other.name) && Objects.equals(birthDate, other.birthDate)
                 && Objects.equals(cpf, other.cpf) && Objects.equals(address, other.address);
     }

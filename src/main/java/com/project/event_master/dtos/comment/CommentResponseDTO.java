@@ -1,14 +1,16 @@
-package com.project.event_master.domain.comment;
+package com.project.event_master.dtos.comment;
 
 import java.time.Instant;
 import java.util.Objects;
 
-import com.project.event_master.domain.event.EventEntity;
-import com.project.event_master.domain.user.UserEntity;
+import com.project.event_master.domain.EventEntity;
+import com.project.event_master.domain.UserEntity;
 
-public class CreateCommentDTO {
+public class CommentResponseDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
+
+    private Long id;
 
     private String text;
 
@@ -20,55 +22,39 @@ public class CreateCommentDTO {
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public CreateCommentDTO() {}
+    public CommentResponseDTO() {}
 
     // GETTERS AND SETTERS ---------------------------------------------------------
 
-    public String getText() {
-        return text;
+    public Long getId() {
+        return id;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getText() {
+        return text;
     }
 
     public UserEntity getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserEntity author) {
-        this.author = author;
-    }
-
     public EventEntity getEvent() {
         return event;
     }
 
-    public void setEvent(EventEntity event) {
-        this.event = event;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt() {
-        this.createdAt = Instant.now();
     }
     
     public Instant getEditedAt() {
         return editedAt;
     }
 
-    public void setEditedAt() {
-        this.editedAt = Instant.now();
-    }
-
     // TO STRING -------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
+        return "CommentEntity [id = " + id + ", text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
                 + createdAt + "edited=" + editedAt + "]";
     }
 
@@ -76,7 +62,7 @@ public class CreateCommentDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, author, event, createdAt, editedAt);
+        return Objects.hash(id, text, author, event, createdAt, editedAt);
     }
 
     @Override
@@ -87,8 +73,8 @@ public class CreateCommentDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CreateCommentDTO other = (CreateCommentDTO) obj;
-        return Objects.equals(text, other.text) && Objects.equals(author, other.author)
+        CommentResponseDTO other = (CommentResponseDTO) obj;
+        return Objects.equals(id, other.id) && Objects.equals(text, other.text) && Objects.equals(author, other.author)
                 && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt)
                 && Objects.equals(editedAt, other.editedAt);
     }

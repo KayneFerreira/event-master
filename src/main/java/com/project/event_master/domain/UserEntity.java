@@ -1,11 +1,19 @@
-package com.project.event_master.domain.user;
+package com.project.event_master.domain;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.project.event_master.domain.address.PhysicalAddress;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-public class CreateUserDTO {
+@Entity
+@Table(name = "users")
+public class UserEntity {
 
     // ATTRIBUTES ------------------------------------------------------------------
 
@@ -17,17 +25,30 @@ public class CreateUserDTO {
             [x] Create associations
                 - Address
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private LocalDate birthDate;
     private String cpf;
 
+    @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public CreateUserDTO() {}
+    public UserEntity() {}
 
     // GETTERS AND SETTERS ---------------------------------------------------------
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -65,15 +86,15 @@ public class CreateUserDTO {
 
     @Override
     public String toString() {
-        return "CreateUserDTO [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
+        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
                 + address + "]";
     }
 
     // HASH CODE AND EQUALS --------------------------------------------------------
-
+    
     @Override
     public int hashCode() {
-        return Objects.hash(name, birthDate, cpf, address);
+        return Objects.hash(id);
     }
 
     @Override
@@ -84,9 +105,8 @@ public class CreateUserDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CreateUserDTO other = (CreateUserDTO) obj;
-        return Objects.equals(name, other.name) && Objects.equals(birthDate, other.birthDate)
-                && Objects.equals(cpf, other.cpf) && Objects.equals(address, other.address);
+        UserEntity other = (UserEntity) obj;
+        return Objects.equals(id, other.id);
     }
 
 }

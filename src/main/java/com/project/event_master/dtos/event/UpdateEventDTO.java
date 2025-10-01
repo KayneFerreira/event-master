@@ -1,11 +1,11 @@
-package com.project.event_master.domain.event;
+package com.project.event_master.dtos.event;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.project.event_master.domain.address.PhysicalAddress;
-import com.project.event_master.domain.comment.CommentEntity;
+import com.project.event_master.domain.PhysicalAddress;
+import com.project.event_master.domain.CommentEntity;
 
 public class UpdateEventDTO {
 

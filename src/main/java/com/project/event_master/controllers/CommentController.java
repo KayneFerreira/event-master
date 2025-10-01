@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.domain.comment.CommentEntity;
+import com.project.event_master.domain.CommentEntity;
 import com.project.event_master.services.CommentService;
 
 @RestController

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.domain.event.EventEntity;
+import com.project.event_master.domain.EventEntity;
 import com.project.event_master.services.EventService;
 
 @RestController

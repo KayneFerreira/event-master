@@ -1,12 +1,12 @@
-package com.project.event_master.domain.comment;
+package com.project.event_master.dtos.comment;
 
 import java.time.Instant;
 import java.util.Objects;
 
-import com.project.event_master.domain.event.EventEntity;
-import com.project.event_master.domain.user.UserEntity;
+import com.project.event_master.domain.EventEntity;
+import com.project.event_master.domain.UserEntity;
 
-public class UpdateCommentDTO {
+public class CreateCommentDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ public class UpdateCommentDTO {
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public UpdateCommentDTO() {}
+    public CreateCommentDTO() {}
 
     // GETTERS AND SETTERS ---------------------------------------------------------
 
@@ -87,7 +87,7 @@ public class UpdateCommentDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UpdateCommentDTO other = (UpdateCommentDTO) obj;
+        CreateCommentDTO other = (CreateCommentDTO) obj;
         return Objects.equals(text, other.text) && Objects.equals(author, other.author)
                 && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt)
                 && Objects.equals(editedAt, other.editedAt);

@@ -1,12 +1,10 @@
-package com.project.event_master.domain.event;
+package com.project.event_master.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.project.event_master.domain.address.PhysicalAddress;
-import com.project.event_master.domain.comment.CommentEntity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.project.event_master.services.exceptions;
+package com.project.event_master.exceptions;
 
 public class RecordNotFoundException extends RuntimeException {
 

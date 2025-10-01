@@ -1,13 +1,13 @@
-package com.project.event_master.domain.event;
+package com.project.event_master.dtos.event;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.project.event_master.domain.address.PhysicalAddress;
-import com.project.event_master.domain.comment.CommentEntity;
+import com.project.event_master.domain.PhysicalAddress;
+import com.project.event_master.domain.CommentEntity;
 
-public class EventResponseDTO {
+public class CreateEventDTO {
 
     // ATTRIBUTES ------------------------------------------------------------------
     /*
@@ -19,8 +19,6 @@ public class EventResponseDTO {
                 - Address
                 - Comments
      */
-    private Long id;
-
     private String title;
 
     private PhysicalAddress address;
@@ -29,20 +27,24 @@ public class EventResponseDTO {
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public EventResponseDTO() {}
+    public CreateEventDTO() {}
 
     // GETTERS AND SETTERS----------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
 
     public String getTitle() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public PhysicalAddress getAddress() {
         return address;
+    }
+
+    public void setAddress(PhysicalAddress address) {
+        this.address = address;
     }
 
     public List<CommentEntity> getComments() {
@@ -53,14 +55,14 @@ public class EventResponseDTO {
 
     @Override
     public String toString() {
-        return "EventEntity [id = " + id + ", title=" + title + ", address=" + address + "]";
+        return "EventEntity [title=" + title + ", address=" + address + "]";
     }
 
     // HASH CODE AND EQUALS---------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, address, comments);
+        return Objects.hash(title, address, comments);
     }
 
     @Override
@@ -71,9 +73,9 @@ public class EventResponseDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        EventResponseDTO other = (EventResponseDTO) obj;
-        return Objects.equals(id, other.id) && Objects.equals(title, other.title)
-                && Objects.equals(address, other.address) && Objects.equals(comments, other.comments);
+        CreateEventDTO other = (CreateEventDTO) obj;
+        return Objects.equals(title, other.title) && Objects.equals(address, other.address)
+                && Objects.equals(comments, other.comments);
     }
 
 }
