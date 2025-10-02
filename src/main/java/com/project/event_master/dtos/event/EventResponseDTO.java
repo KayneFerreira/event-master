@@ -29,9 +29,14 @@ public class EventResponseDTO {
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
-    public EventResponseDTO() {}
+    public EventResponseDTO(Long id, String title, PhysicalAddress address, List<CommentEntity> comments) {
+        this.id = id;
+        this.title = title;
+        this.address = address;
+        this.comments = comments;
+    }
 
-    // GETTERS AND SETTERS----------------------------------------------------------
+    // GETTERS ---------------------------------------------------------------------
 
     public Long getId() {
         return id;

@@ -1,11 +1,8 @@
 package com.project.event_master.dtos.event;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import com.project.event_master.domain.PhysicalAddress;
-import com.project.event_master.domain.CommentEntity;
 
 public class CreateEventDTO {
 
@@ -22,8 +19,6 @@ public class CreateEventDTO {
     private String title;
 
     private PhysicalAddress address;
-
-    private List<CommentEntity> comments = new ArrayList<>();
 
     // DEFAULT CONSTRUCTOR ---------------------------------------------------------
 
@@ -47,10 +42,6 @@ public class CreateEventDTO {
         this.address = address;
     }
 
-    public List<CommentEntity> getComments() {
-        return comments;
-    }
-
     // TO STRING -------------------------------------------------------------------
 
     @Override
@@ -58,12 +49,12 @@ public class CreateEventDTO {
         return "EventEntity [title=" + title + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS---------------------------------------------------------
-
     @Override
     public int hashCode() {
-        return Objects.hash(title, address, comments);
+        return Objects.hash(title, address);
     }
+
+    // HASH CODE AND EQUALS---------------------------------------------------------
 
     @Override
     public boolean equals(Object obj) {
@@ -74,8 +65,7 @@ public class CreateEventDTO {
         if (getClass() != obj.getClass())
             return false;
         CreateEventDTO other = (CreateEventDTO) obj;
-        return Objects.equals(title, other.title) && Objects.equals(address, other.address)
-                && Objects.equals(comments, other.comments);
+        return Objects.equals(title, other.title) && Objects.equals(address, other.address);
     }
 
 }

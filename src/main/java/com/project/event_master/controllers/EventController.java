@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.domain.EventEntity;
+import com.project.event_master.dtos.event.CreateEventDTO;
+import com.project.event_master.dtos.event.EventResponseDTO;
+import com.project.event_master.dtos.event.UpdateEventDTO;
 import com.project.event_master.services.EventService;
 
 @RestController
@@ -30,27 +32,27 @@ public class EventController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public EventEntity createNewEvent(@RequestBody EventEntity event) {
+    public EventResponseDTO createNewEvent(@RequestBody CreateEventDTO event) {
         return service.createNewEvent(event);
     }
 
     @GetMapping
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
-    public List<EventEntity> findAllEvents() {
+    public List<EventResponseDTO> findAllEvents() {
         return service.findAllEvents();
     }
 
     @GetMapping("/{id}")
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
-    public EventEntity findEventById(@PathVariable Long id) {
+    public EventResponseDTO findEventById(@PathVariable Long id) {
         return service.findEventById(id);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)
-    public EventEntity updateEvent(@RequestBody EventEntity event, @PathVariable Long id) {
+    public EventResponseDTO updateEvent(@RequestBody UpdateEventDTO event, @PathVariable Long id) {
         return service.updateEvent(event, id);
     }
 

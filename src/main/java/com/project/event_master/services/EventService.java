@@ -1,11 +1,16 @@
 package com.project.event_master.services;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.project.event_master.domain.EventEntity;
+import com.project.event_master.dtos.event.CreateEventDTO;
+import com.project.event_master.dtos.event.EventResponseDTO;
+import com.project.event_master.dtos.event.UpdateEventDTO;
 import com.project.event_master.exceptions.RecordNotFoundException;
+import com.project.event_master.mappers.EventMapper;
 import com.project.event_master.repositories.EventRepository;
 
 @Service
@@ -13,36 +18,41 @@ public class EventService {
 
     // DEPENDENCY INJECTION 
     private EventRepository repository;
+    private EventMapper mapper;
 
-    private EventService(EventRepository repository) {
+    private EventService(EventRepository repository, EventMapper mapper) {
         this.repository = repository;
+        this.mapper = mapper;
     }
 
-    public EventEntity createNewEvent(EventEntity event) {
-        return repository.save(event);
+    public EventResponseDTO createNewEvent(CreateEventDTO event) {
+        EventEntity newEvent = mapper.toEntity(event);
+        return mapper.toDto(repository.save(newEvent));
     }
 
-    public List<EventEntity> findAllEvents() {
-        return repository.findAll();
+    public List<EventResponseDTO> findAllEvents() {
+        return repository.findAll().stream()
+            .map(event -> mapper.toDto(event))
+            .collect(Collectors.toList());
     }
 
-    public EventEntity findEventById(Long id) {
-        return repository.findById(id)
+    public EventResponseDTO findEventById(Long id) {
+        return mapper.toDto(repository.findById(id)
+            .orElseThrow(() -> new RecordNotFoundException("Evento", id)));
+    }
+
+    public EventResponseDTO updateEvent(UpdateEventDTO event, Long id) {
+        EventEntity eventToUpdate = repository.findById(id)
             .orElseThrow(() -> new RecordNotFoundException("Evento", id));
-    }
-
-    public EventEntity updateEvent(EventEntity event, Long id) {
-        return repository.findById(id)
-            .map(updateEvent -> {
-                updateEvent.setTitle(event.getTitle());
-                updateEvent.setAddress(event.getAddress());
-                return repository.save(updateEvent);
-            }
-        ).orElseThrow(() -> new RecordNotFoundException("Evento", id));
+        mapper.updateEntityFromDto(event, eventToUpdate);
+        return mapper.toDto(repository.save(eventToUpdate));
     }
 
     public void deleteEvent(Long id) {
-        repository.delete(findEventById(id));
+        if (!repository.existsById(id)) {
+            throw new RecordNotFoundException("Evento", id);
+        }
+        repository.deleteById(id);
     }
 
 }
