@@ -5,7 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.dtos.comment.CommentResponseDTO;
+import com.project.event_master.dtos.comment.CreateCommentDTO;
+import com.project.event_master.dtos.comment.UpdateCommentDTO;
 import com.project.event_master.exceptions.RecordNotFoundException;
+import com.project.event_master.mappers.CommentMapper;
 import com.project.event_master.repositories.CommentRepository;
 import com.project.event_master.repositories.EventRepository;
 import com.project.event_master.repositories.UserRepository;
@@ -17,51 +21,57 @@ public class CommentService {
     private CommentRepository commentRepository;
     private UserRepository userRepository;
     private EventRepository eventRepository;
+    private CommentMapper mapper;
 
     private CommentService(CommentRepository repository, 
                             UserRepository userRepository, 
-                            EventRepository eventRepository) {
+                            EventRepository eventRepository,
+                            CommentMapper mapper) {
         this.commentRepository = repository;
         this.userRepository = userRepository;
         this.eventRepository = eventRepository;
+        this.mapper = mapper;
     }
 
-    public CommentEntity createNewComment(CommentEntity comment, Long userId, Long eventId) {
+    public CommentResponseDTO createNewComment(CreateCommentDTO comment, Long userId, Long eventId) {
         return userRepository.findById(userId)
             .map(user -> {
                 return eventRepository.findById(eventId)
                     .map(event -> {
-                        comment.setAuthor(user);
-                        comment.setEvent(event);
-                        comment.setCreatedAt();
-                        return commentRepository.save(comment);
+                        CommentEntity newComment = new CommentEntity();
+                        newComment.setText(comment.getText());
+                        newComment.setAuthor(user);
+                        newComment.setEvent(event);
+                        newComment.setCreatedAt();
+                        return mapper.toDto(commentRepository.save(newComment));
                         }
                     ).orElseThrow(() -> new RecordNotFoundException("Evento", eventId));
                 }
             ).orElseThrow(() -> new RecordNotFoundException("Usuário", userId));
     }
 
-    public List<CommentEntity> findAllCommentsByEventId(Long eventId) {
-        return commentRepository.findByEventId(eventId);
+    public List<CommentResponseDTO> findAllCommentsByEventId(Long eventId) {
+        return mapper.toDtoList(commentRepository.findByEventId(eventId));
     }
 
-    public CommentEntity findCommentById(Long id) {
-        return commentRepository.findById(id)
-            .orElseThrow(() -> new RecordNotFoundException("Comentário", id));
+    public CommentResponseDTO findCommentById(Long id) {
+        return mapper.toDto(commentRepository.findById(id)
+            .orElseThrow(() -> new RecordNotFoundException("Comentário", id)));
     }
 
-    public CommentEntity updateComment(CommentEntity comment, Long commentId, Long userId, Long eventId) {
+    public CommentResponseDTO updateComment(UpdateCommentDTO comment, Long commentId, Long userId, Long eventId) {
         return userRepository.findById(userId)
             .map(user -> {
                 return eventRepository.findById(eventId)
                     .map(event -> {
                         return commentRepository.findById(commentId)
-                            .map(updateComment -> {
-                                updateComment.setText(comment.getText());
-                                updateComment.setAuthor(user);
-                                updateComment.setEvent(event);
-                                updateComment.setEditedAt();
-                                return commentRepository.save(updateComment);
+                            .map(commentToUpdate -> {
+                                CommentEntity newComment = new CommentEntity();
+                                newComment.setText(comment.getText());
+                                newComment.setAuthor(user);
+                                newComment.setEvent(event);
+                                newComment.setEditedAt();
+                                return mapper.toDto(commentRepository.save(newComment));
                             }
                         ).orElseThrow(() -> new RecordNotFoundException("Comentário", commentId));
                     }
@@ -71,7 +81,10 @@ public class CommentService {
     }
 
     public void deleteComment(Long id) {
-        commentRepository.delete(findCommentById(id));
+        if (!commentRepository.existsById(id)) {
+            throw new RecordNotFoundException("Comentário", id);
+        }
+        commentRepository.deleteById(id);
     }
 
 }

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.dtos.comment.CommentResponseDTO;
+import com.project.event_master.dtos.comment.CreateCommentDTO;
+import com.project.event_master.dtos.comment.UpdateCommentDTO;
 import com.project.event_master.services.CommentService;
 
 @RestController
@@ -30,7 +32,7 @@ public class CommentController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public CommentEntity createNewComment(@RequestBody CommentEntity comment, 
+    public CommentResponseDTO createNewComment(@RequestBody CreateCommentDTO comment, 
                                           @PathVariable Long userId, 
                                           @PathVariable Long eventId) {
         return service.createNewComment(comment, userId, eventId);
@@ -39,20 +41,20 @@ public class CommentController {
     @GetMapping
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
-    public List<CommentEntity> findAllComments(@PathVariable Long eventId) {
+    public List<CommentResponseDTO> findAllComments(@PathVariable Long eventId) {
         return service.findAllCommentsByEventId(eventId);
     }
 
     @GetMapping("/{commentId}")
     @ResponseBody
     @ResponseStatus(code = HttpStatus.OK)
-    public CommentEntity findCommentById(@PathVariable Long commentId) {
+    public CommentResponseDTO findCommentById(@PathVariable Long commentId) {
         return service.findCommentById(commentId);
     }
 
     @PutMapping("/{commentId}")
     @ResponseStatus(code = HttpStatus.OK)
-    public CommentEntity updateComment(@RequestBody CommentEntity comment, 
+    public CommentResponseDTO updateComment(@RequestBody UpdateCommentDTO comment, 
                                        @PathVariable Long commentId,
                                        @PathVariable Long userId,
                                        @PathVariable Long eventId) {

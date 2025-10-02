@@ -3,28 +3,33 @@ package com.project.event_master.dtos.comment;
 import java.time.Instant;
 import java.util.Objects;
 
-import com.project.event_master.domain.EventEntity;
-import com.project.event_master.domain.UserEntity;
-
 public class CommentResponseDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
 
     private Long id;
 
     private String text;
 
-    private UserEntity author;
-    private EventEntity event;
+    private CommentAuthorDTO author;
+    private CommentEventDTO event;
 
     private Instant createdAt;
     private Instant editedAt;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public CommentResponseDTO() {}
+    public CommentResponseDTO(Long id, String text, CommentAuthorDTO author, 
+            CommentEventDTO event, Instant createdAt, Instant editedAt) {
+        this.id = id;
+        this.text = text;
+        this.author = author;
+        this.event = event;
+        this.createdAt = createdAt;
+        this.editedAt = editedAt;
+    }
 
-    // GETTERS AND SETTERS ---------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public Long getId() {
         return id;
@@ -34,11 +39,11 @@ public class CommentResponseDTO {
         return text;
     }
 
-    public UserEntity getAuthor() {
+    public CommentAuthorDTO getAuthor() {
         return author;
     }
 
-    public EventEntity getEvent() {
+    public CommentEventDTO getEvent() {
         return event;
     }
 
@@ -50,15 +55,15 @@ public class CommentResponseDTO {
         return editedAt;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "CommentEntity [id = " + id + ", text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
-                + createdAt + "edited=" + editedAt + "]";
+        return "CommentEntity [id = " + id + ", text=" + text + ", author=" + author 
+                + ", event=" + event + ", createdAt=" + createdAt + ", edited=" + editedAt + "]";
     }
 
-    // HASH CODE AND EQUALS --------------------------------------------------------
+    // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {

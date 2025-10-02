@@ -3,80 +3,70 @@ package com.project.event_master.dtos.comment;
 import java.time.Instant;
 import java.util.Objects;
 
-import com.project.event_master.domain.EventEntity;
-import com.project.event_master.domain.UserEntity;
-
 public class CreateCommentDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
 
     private String text;
 
-    private UserEntity author;
-    private EventEntity event;
+    private CommentAuthorDTO author;
+    private CommentEventDTO event;
 
     private Instant createdAt;
-    private Instant editedAt;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public CreateCommentDTO() {}
 
-    // GETTERS AND SETTERS ---------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public UserEntity getAuthor() {
+    public CommentAuthorDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(UserEntity author) {
-        this.author = author;
-    }
-
-    public EventEntity getEvent() {
+    public CommentEventDTO getEvent() {
         return event;
-    }
-
-    public void setEvent(EventEntity event) {
-        this.event = event;
     }
 
     public Instant getCreatedAt() {
         return createdAt;
     }
 
+    // SETTERS --------------------------------------------------------------------------
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setAuthor(CommentAuthorDTO author) {
+        this.author = author;
+    }
+
+    public void setEvent(CommentEventDTO event) {
+        this.event = event;
+    }
+
     public void setCreatedAt() {
         this.createdAt = Instant.now();
     }
     
-    public Instant getEditedAt() {
-        return editedAt;
-    }
-
-    public void setEditedAt() {
-        this.editedAt = Instant.now();
-    }
-
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
-                + createdAt + "edited=" + editedAt + "]";
+        return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event 
+                + ", createdAt=" + createdAt + "]";
     }
 
-    // HASH CODE AND EQUALS --------------------------------------------------------
+    // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, author, event, createdAt, editedAt);
+        return Objects.hash(text, author, event, createdAt);
     }
 
     @Override
@@ -89,8 +79,7 @@ public class CreateCommentDTO {
             return false;
         CreateCommentDTO other = (CreateCommentDTO) obj;
         return Objects.equals(text, other.text) && Objects.equals(author, other.author)
-                && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt)
-                && Objects.equals(editedAt, other.editedAt);
+                && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt);
     }
 
 }

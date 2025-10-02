@@ -6,7 +6,7 @@ import com.project.event_master.domain.PhysicalAddress;
 
 public class UpdateEventDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
     /*
         TODO:
             [ ] Fill attributes
@@ -20,36 +20,38 @@ public class UpdateEventDTO {
 
     private PhysicalAddress address;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public UpdateEventDTO() {}
 
-    // GETTERS AND SETTERS----------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public PhysicalAddress getAddress() {
         return address;
     }
 
+    // SETTERS --------------------------------------------------------------------------
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public void setAddress(PhysicalAddress address) {
         this.address = address;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
         return "EventEntity [title=" + title + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS---------------------------------------------------------
+    // HASH CODE AND EQUALS--------------------------------------------------------------
 
     @Override
     public int hashCode() {

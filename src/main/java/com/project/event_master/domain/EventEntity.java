@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 @Table(name = "events")
 public class EventEntity {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
     /*
         TODO:
             [ ] Fill attributes
@@ -47,48 +47,50 @@ public class EventEntity {
     @JsonManagedReference
     private List<CommentEntity> comments = new ArrayList<>();
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public EventEntity() {}
 
-    // GETTERS AND SETTERS----------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public PhysicalAddress getAddress() {
         return address;
-    }
-
-    public void setAddress(PhysicalAddress address) {
-        this.address = address;
     }
 
     public List<CommentEntity> getComments() {
         return comments;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // SETTERS --------------------------------------------------------------------------
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAddress(PhysicalAddress address) {
+        this.address = address;
+    }
+
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
         return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS---------------------------------------------------------
+    // HASH CODE AND EQUALS--------------------------------------------------------------
 
     @Override
     public int hashCode() {

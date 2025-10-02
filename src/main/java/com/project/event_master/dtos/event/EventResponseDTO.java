@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 import com.project.event_master.domain.PhysicalAddress;
-import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.dtos.comment.CommentResponseDTO;
 
 public class EventResponseDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
     /*
         TODO:
             [ ] Fill attributes
@@ -25,18 +25,18 @@ public class EventResponseDTO {
 
     private PhysicalAddress address;
 
-    private List<CommentEntity> comments = new ArrayList<>();
+    private List<CommentResponseDTO> comments = new ArrayList<>();
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public EventResponseDTO(Long id, String title, PhysicalAddress address, List<CommentEntity> comments) {
+    public EventResponseDTO(Long id, String title, PhysicalAddress address, List<CommentResponseDTO> comments) {
         this.id = id;
         this.title = title;
         this.address = address;
         this.comments = comments;
     }
 
-    // GETTERS ---------------------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public Long getId() {
         return id;
@@ -50,18 +50,18 @@ public class EventResponseDTO {
         return address;
     }
 
-    public List<CommentEntity> getComments() {
+    public List<CommentResponseDTO> getComments() {
         return comments;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
         return "EventEntity [id = " + id + ", title=" + title + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS---------------------------------------------------------
+    // HASH CODE AND EQUALS--------------------------------------------------------------
 
     @Override
     public int hashCode() {

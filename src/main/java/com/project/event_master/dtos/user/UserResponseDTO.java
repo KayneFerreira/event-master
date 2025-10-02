@@ -7,7 +7,7 @@ import com.project.event_master.domain.PhysicalAddress;
 
 public class UserResponseDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
 
     /*
         TODO:
@@ -18,13 +18,14 @@ public class UserResponseDTO {
                 - Address
      */
     private final Long id;
+
     private final String name;
     private final LocalDate birthDate;
     private final String cpf;
 
     private final PhysicalAddress address;
 
-    // CONSTRUCTOR -----------------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public UserResponseDTO(Long id, String name, LocalDate birthDate, String cpf, PhysicalAddress address) {
         this.id = id;
@@ -34,7 +35,7 @@ public class UserResponseDTO {
         this.address = address;
     }
 
-    // GETTERS ---------------------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public Long getId() {
         return id;
@@ -56,15 +57,15 @@ public class UserResponseDTO {
         return address;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "UserResponseDTO [id = " + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf 
-                + ", address=" + address + "]";
+        return "UserResponseDTO [id = " + id + ", name=" + name + ", birthDate=" + birthDate 
+                + ", cpf=" + cpf + ", address=" + address + "]";
     }
     
-    // HASH CODE AND EQUALS --------------------------------------------------------
+    // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {

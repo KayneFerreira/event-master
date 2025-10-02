@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "comments")
 public class CommentEntity {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,71 +35,71 @@ public class CommentEntity {
 
     private Instant editedAt;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public CommentEntity() {}
 
-    // GETTERS AND SETTERS ---------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public UserEntity getAuthor() {
         return author;
-    }
-
-    public void setAuthor(UserEntity author) {
-        this.author = author;
     }
 
     public EventEntity getEvent() {
         return event;
     }
 
-    public void setEvent(EventEntity event) {
-        this.event = event;
-    }
-
     public Instant getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt() {
-        this.createdAt = Instant.now();
-    }
-    
     public Instant getEditedAt() {
         return editedAt;
+    }
+
+    // SETTERS --------------------------------------------------------------------------
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setAuthor(UserEntity author) {
+        this.author = author;
+    }
+
+    public void setEvent(EventEntity event) {
+        this.event = event;
+    }
+
+    public void setCreatedAt() {
+        this.createdAt = Instant.now();
     }
 
     public void setEditedAt() {
         this.editedAt = Instant.now();
     }
 
-    // TO STRING -------------------------------------------------------------------
-
-
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "CommentEntity [id=" + id + ", text=" + text + ", author=" + author + ", event=" + event + ", createdAt="
-                + createdAt + "edited=" + editedAt + "]";
+        return "CommentEntity [id=" + id + ", text=" + text + ", author=" + author 
+                + ", event=" + event + ", createdAt=" + createdAt + "edited=" + editedAt + "]";
     }
 
-    // HASH CODE AND EQUALS --------------------------------------------------------
+    // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {

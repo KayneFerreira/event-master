@@ -7,7 +7,7 @@ import com.project.event_master.domain.PhysicalAddress;
 
 public class UpdateUserDTO {
 
-    // ATTRIBUTES ------------------------------------------------------------------
+    // ATTRIBUTES -----------------------------------------------------------------------
 
     /*
         TODO:
@@ -23,53 +23,55 @@ public class UpdateUserDTO {
 
     private PhysicalAddress address;
 
-    // DEFAULT CONSTRUCTOR ---------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public UpdateUserDTO() {}
 
-    // GETTERS AND SETTERS ---------------------------------------------------------
+    // GETTERS --------------------------------------------------------------------------
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public PhysicalAddress getAddress() {
         return address;
     }
 
+    // SETTERS --------------------------------------------------------------------------
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
     public void setAddress(PhysicalAddress address) {
         this.address = address;
     }
 
-    // TO STRING -------------------------------------------------------------------
+    // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", address="
-                + address + "]";
+        return "UserEntity [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf 
+                + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS --------------------------------------------------------
+    // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {
