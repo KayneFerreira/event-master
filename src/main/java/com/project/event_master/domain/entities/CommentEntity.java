@@ -1,9 +1,10 @@
-package com.project.event_master.domain;
+package com.project.event_master.domain.entities;
 
-import java.time.LocalDate;
+import java.time.Instant;
 import java.util.Objects;
 
-import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,33 +13,31 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class UserEntity {
+@Table(name = "comments")
+public class CommentEntity {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
-    /*
-        TODO:
-            [ ] Fill attributes
-                - Create getters and setters
-                - Update toString
-            [x] Create associations
-                - Address
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private LocalDate birthDate;
-    private String cpf;
+    private String text;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private PhysicalAddress address;
+    @ManyToOne
+    private UserEntity author;
+
+    @ManyToOne
+    @JsonBackReference
+    private EventEntity event;
+
+    private Instant createdAt;
+
+    private Instant editedAt;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public UserEntity() {}
+    public CommentEntity() {}
 
     // GETTERS --------------------------------------------------------------------------
 
@@ -46,20 +45,24 @@ public class UserEntity {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getText() {
+        return text;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public UserEntity getAuthor() {
+        return author;
     }
 
-    public String getCpf() {
-        return cpf;
+    public EventEntity getEvent() {
+        return event;
     }
 
-    public PhysicalAddress getAddress() {
-        return address;
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Instant getEditedAt() {
+        return editedAt;
     }
 
     // SETTERS --------------------------------------------------------------------------
@@ -68,32 +71,36 @@ public class UserEntity {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setAuthor(UserEntity author) {
+        this.author = author;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setEvent(EventEntity event) {
+        this.event = event;
     }
 
-    public void setAddress(PhysicalAddress address) {
-        this.address = address;
+    public void setCreatedAt() {
+        this.createdAt = Instant.now();
+    }
+
+    public void setEditedAt() {
+        this.editedAt = Instant.now();
     }
 
     // TO STRING ------------------------------------------------------------------------
 
     @Override
     public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate 
-                + ", cpf=" + cpf + ", address=" + address + "]";
+        return "CommentEntity [id=" + id + ", text=" + text + ", author=" + author 
+                + ", event=" + event + ", createdAt=" + createdAt + "edited=" + editedAt + "]";
     }
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
@@ -107,7 +114,7 @@ public class UserEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserEntity other = (UserEntity) obj;
+        CommentEntity other = (CommentEntity) obj;
         return Objects.equals(id, other.id);
     }
 

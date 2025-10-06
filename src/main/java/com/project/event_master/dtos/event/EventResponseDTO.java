@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.project.event_master.domain.PhysicalAddress;
+import com.project.event_master.domain.valueobjects.PhysicalAddress;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 
 public class EventResponseDTO {

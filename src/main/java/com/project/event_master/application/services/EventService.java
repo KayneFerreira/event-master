@@ -1,17 +1,17 @@
-package com.project.event_master.services;
+package com.project.event_master.application.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.domain.EventEntity;
+import com.project.event_master.domain.entities.EventEntity;
+import com.project.event_master.domain.repositories.EventRepository;
 import com.project.event_master.dtos.event.CreateEventDTO;
 import com.project.event_master.dtos.event.EventResponseDTO;
 import com.project.event_master.dtos.event.UpdateEventDTO;
 import com.project.event_master.exceptions.RecordNotFoundException;
 import com.project.event_master.mappers.EventMapper;
-import com.project.event_master.repositories.EventRepository;
 
 @Service
 public class EventService {

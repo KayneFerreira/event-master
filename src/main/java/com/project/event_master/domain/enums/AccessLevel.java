@@ -1,4 +1,4 @@
-package com.project.event_master.domain;
+package com.project.event_master.domain.enums;
 
 public enum AccessLevel {
 

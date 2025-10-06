@@ -1,26 +1,24 @@
-package com.project.event_master.domain;
+package com.project.event_master.domain.entities;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDate;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.project.event_master.domain.valueobjects.PhysicalAddress;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "events")
-public class EventEntity {
+@Table(name = "users")
+public class UserEntity {
 
     // ATTRIBUTES -----------------------------------------------------------------------
+
     /*
         TODO:
             [ ] Fill attributes
@@ -28,28 +26,21 @@ public class EventEntity {
                 - Update toString
             [x] Create associations
                 - Address
-                - Comments
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String name;
+    private LocalDate birthDate;
+    private String cpf;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
 
-    @OneToMany(
-        mappedBy = "event", 
-        cascade = CascadeType.ALL, 
-        fetch = FetchType.LAZY
-        )
-    @JsonManagedReference
-    private List<CommentEntity> comments = new ArrayList<>();
-
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public EventEntity() {}
+    public UserEntity() {}
 
     // GETTERS --------------------------------------------------------------------------
 
@@ -57,16 +48,20 @@ public class EventEntity {
         return id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public PhysicalAddress getAddress() {
         return address;
-    }
-
-    public List<CommentEntity> getComments() {
-        return comments;
     }
 
     // SETTERS --------------------------------------------------------------------------
@@ -75,8 +70,16 @@ public class EventEntity {
         this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public void setAddress(PhysicalAddress address) {
@@ -87,11 +90,12 @@ public class EventEntity {
 
     @Override
     public String toString() {
-        return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
+        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate 
+                + ", cpf=" + cpf + ", address=" + address + "]";
     }
 
-    // HASH CODE AND EQUALS--------------------------------------------------------------
-
+    // HASH CODE AND EQUALS -------------------------------------------------------------
+    
     @Override
     public int hashCode() {
         return Objects.hash(id);
@@ -105,8 +109,8 @@ public class EventEntity {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        EventEntity other = (EventEntity) obj;
+        UserEntity other = (UserEntity) obj;
         return Objects.equals(id, other.id);
     }
-    
+
 }

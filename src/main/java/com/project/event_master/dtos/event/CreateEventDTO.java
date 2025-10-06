@@ -2,7 +2,7 @@ package com.project.event_master.dtos.event;
 
 import java.util.Objects;
 
-import com.project.event_master.domain.PhysicalAddress;
+import com.project.event_master.domain.valueobjects.PhysicalAddress;
 
 public class CreateEventDTO {
 

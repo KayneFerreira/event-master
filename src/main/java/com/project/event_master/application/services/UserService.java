@@ -1,18 +1,18 @@
-package com.project.event_master.services;
+package com.project.event_master.application.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.domain.UserEntity;
+import com.project.event_master.domain.entities.UserEntity;
+import com.project.event_master.domain.repositories.UserRepository;
 import com.project.event_master.dtos.user.CreateUserDTO;
 import com.project.event_master.dtos.user.UpdateUserDTO;
 import com.project.event_master.dtos.user.UserResponseDTO;
 import com.project.event_master.exceptions.RecordNotFoundException;
 import com.project.event_master.exceptions.ValidationException;
 import com.project.event_master.mappers.UserMapper;
-import com.project.event_master.repositories.UserRepository;
 import com.project.event_master.validation.CPFValidation;
 
 @Service

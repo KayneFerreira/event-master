@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.domain.entities.CommentEntity;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 import com.project.event_master.dtos.comment.CreateCommentDTO;
 

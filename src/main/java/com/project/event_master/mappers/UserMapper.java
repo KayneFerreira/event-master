@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 
-import com.project.event_master.domain.UserEntity;
+import com.project.event_master.domain.entities.UserEntity;
 import com.project.event_master.dtos.user.CreateUserDTO;
 import com.project.event_master.dtos.user.UpdateUserDTO;
 import com.project.event_master.dtos.user.UserResponseDTO;

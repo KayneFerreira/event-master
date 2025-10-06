@@ -1,18 +1,18 @@
-package com.project.event_master.services;
+package com.project.event_master.application.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.project.event_master.domain.CommentEntity;
+import com.project.event_master.domain.entities.CommentEntity;
+import com.project.event_master.domain.repositories.CommentRepository;
+import com.project.event_master.domain.repositories.EventRepository;
+import com.project.event_master.domain.repositories.UserRepository;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 import com.project.event_master.dtos.comment.CreateCommentDTO;
 import com.project.event_master.dtos.comment.UpdateCommentDTO;
 import com.project.event_master.exceptions.RecordNotFoundException;
 import com.project.event_master.mappers.CommentMapper;
-import com.project.event_master.repositories.CommentRepository;
-import com.project.event_master.repositories.EventRepository;
-import com.project.event_master.repositories.UserRepository;
 
 @Service
 public class CommentService {
