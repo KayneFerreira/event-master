@@ -18,10 +18,10 @@ import com.project.event_master.mappers.CommentMapper;
 public class CommentService {
 
     //DEPENDENCY INJECTION
-    private CommentRepository commentRepository;
-    private UserRepository userRepository;
-    private EventRepository eventRepository;
-    private CommentMapper mapper;
+    private final CommentRepository commentRepository;
+    private final UserRepository userRepository;
+    private final EventRepository eventRepository;
+    private final CommentMapper mapper;
 
     private CommentService(CommentRepository repository, 
                             UserRepository userRepository, 
@@ -66,12 +66,11 @@ public class CommentService {
                     .map(event -> {
                         return commentRepository.findById(commentId)
                             .map(commentToUpdate -> {
-                                CommentEntity newComment = new CommentEntity();
-                                newComment.setText(comment.getText());
-                                newComment.setAuthor(user);
-                                newComment.setEvent(event);
-                                newComment.setEditedAt();
-                                return mapper.toDto(commentRepository.save(newComment));
+                                commentToUpdate.setText(comment.getText());
+                                commentToUpdate.setAuthor(user);
+                                commentToUpdate.setEvent(event);
+                                commentToUpdate.setEditedAt();
+                                return mapper.toDto(commentRepository.save(commentToUpdate));
                             }
                         ).orElseThrow(() -> new RecordNotFoundException("Comentário", commentId));
                     }

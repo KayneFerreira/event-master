@@ -1,43 +1,41 @@
-package com.project.event_master.dtos.comment;
+package com.project.event_master.dtos.address;
 
 import java.util.Objects;
 
-public class CommentAuthorDTO {
+public class CreateAddressDTO {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
-    private final Long id;
-    private final String name;
+    private String city;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public CommentAuthorDTO(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+    public CreateAddressDTO() {}
 
     // GETTERS --------------------------------------------------------------------------
 
-    public Long getId() {
-        return id;
+    public String getCity() {
+        return city;
     }
 
-    public String getName() {
-        return name;
+    // SETTERS --------------------------------------------------------------------------
+    
+    public void setCity(String city) {
+        this.city = city;
     }
 
     // TO STRING ------------------------------------------------------------------------
-
+    
     @Override
     public String toString() {
-        return "CreateUserDTO [id= " + id + ", name=" + name + "]";
+        return "CreateAddressDTO [city=" + city + "]";
     }
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(city);
     }
 
     @Override
@@ -48,8 +46,8 @@ public class CommentAuthorDTO {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CommentAuthorDTO other = (CommentAuthorDTO) obj;
-        return Objects.equals(id, other.id) && Objects.equals(name, other.name);
+        CreateAddressDTO other = (CreateAddressDTO) obj;
+        return Objects.equals(city, other.city);
     }
 
 }

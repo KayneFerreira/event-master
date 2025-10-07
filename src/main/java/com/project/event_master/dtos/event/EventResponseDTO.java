@@ -1,10 +1,9 @@
 package com.project.event_master.dtos.event;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import com.project.event_master.domain.valueobjects.PhysicalAddress;
+import com.project.event_master.dtos.address.AddressResponseDTO;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 
 public class EventResponseDTO {
@@ -19,17 +18,17 @@ public class EventResponseDTO {
                 - Address
                 - Comments
      */
-    private Long id;
+    private final Long id;
 
-    private String title;
+    private final String title;
 
-    private PhysicalAddress address;
+    private final AddressResponseDTO address;
 
-    private List<CommentResponseDTO> comments = new ArrayList<>();
+    private final List<CommentResponseDTO> comments;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public EventResponseDTO(Long id, String title, PhysicalAddress address, List<CommentResponseDTO> comments) {
+    public EventResponseDTO(Long id, String title, AddressResponseDTO address, List<CommentResponseDTO> comments) {
         this.id = id;
         this.title = title;
         this.address = address;
@@ -46,7 +45,7 @@ public class EventResponseDTO {
         return title;
     }
 
-    public PhysicalAddress getAddress() {
+    public AddressResponseDTO getAddress() {
         return address;
     }
 

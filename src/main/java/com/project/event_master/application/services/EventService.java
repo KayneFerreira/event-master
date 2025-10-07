@@ -17,8 +17,8 @@ import com.project.event_master.mappers.EventMapper;
 public class EventService {
 
     // DEPENDENCY INJECTION 
-    private EventRepository repository;
-    private EventMapper mapper;
+    private final EventRepository repository;
+    private final EventMapper mapper;
 
     private EventService(EventRepository repository, EventMapper mapper) {
         this.repository = repository;

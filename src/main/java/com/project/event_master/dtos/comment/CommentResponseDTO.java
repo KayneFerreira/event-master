@@ -7,15 +7,15 @@ public class CommentResponseDTO {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
-    private Long id;
+    private final Long id;
 
-    private String text;
+    private final String text;
 
-    private CommentAuthorDTO author;
-    private CommentEventDTO event;
+    private final CommentAuthorDTO author;
+    private final CommentEventDTO event;
 
-    private Instant createdAt;
-    private Instant editedAt;
+    private final Instant createdAt;
+    private final Instant editedAt;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 

@@ -3,7 +3,7 @@ package com.project.event_master.dtos.user;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.project.event_master.domain.valueobjects.PhysicalAddress;
+import com.project.event_master.dtos.address.CreateAddressDTO;
 
 public class CreateUserDTO {
 
@@ -21,7 +21,7 @@ public class CreateUserDTO {
     private LocalDate birthDate;
     private String cpf;
 
-    private PhysicalAddress address;
+    private CreateAddressDTO address;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
@@ -41,7 +41,7 @@ public class CreateUserDTO {
         return cpf;
     }
 
-    public PhysicalAddress getAddress() {
+    public CreateAddressDTO getAddress() {
         return address;
     }
 
@@ -59,7 +59,7 @@ public class CreateUserDTO {
         this.cpf = cpf;
     }
 
-    public void setAddress(PhysicalAddress address) {
+    public void setAddress(CreateAddressDTO address) {
         this.address = address;
     }
 

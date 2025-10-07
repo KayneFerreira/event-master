@@ -6,8 +6,8 @@ public class CommentEventDTO {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
-    private Long id;
-    private String title;
+    private final Long id;
+    private final String title;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 

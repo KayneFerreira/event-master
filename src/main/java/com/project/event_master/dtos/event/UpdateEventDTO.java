@@ -2,7 +2,7 @@ package com.project.event_master.dtos.event;
 
 import java.util.Objects;
 
-import com.project.event_master.domain.valueobjects.PhysicalAddress;
+import com.project.event_master.dtos.address.UpdateAddressDTO;
 
 public class UpdateEventDTO {
 
@@ -18,7 +18,7 @@ public class UpdateEventDTO {
      */
     private String title;
 
-    private PhysicalAddress address;
+    private UpdateAddressDTO address;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
@@ -30,7 +30,7 @@ public class UpdateEventDTO {
         return title;
     }
 
-    public PhysicalAddress getAddress() {
+    public UpdateAddressDTO getAddress() {
         return address;
     }
 
@@ -40,7 +40,7 @@ public class UpdateEventDTO {
         this.title = title;
     }
 
-    public void setAddress(PhysicalAddress address) {
+    public void setAddress(UpdateAddressDTO address) {
         this.address = address;
     }
 

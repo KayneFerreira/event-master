@@ -23,7 +23,7 @@ import com.project.event_master.dtos.comment.UpdateCommentDTO;
 public class CommentController {
 
     // DEPENDENCY INJECTION
-    private CommentService service;
+    private final CommentService service;
 
     private CommentController(CommentService service) {
         this.service = service;

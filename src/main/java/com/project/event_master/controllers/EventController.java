@@ -23,7 +23,7 @@ import com.project.event_master.dtos.event.UpdateEventDTO;
 public class EventController {
 
     // DEPENDENCY INJECTION
-    private EventService service;
+    private final EventService service;
 
     private EventController(EventService service) {
         this.service = service;

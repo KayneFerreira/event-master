@@ -8,6 +8,7 @@ import org.mapstruct.MappingTarget;
 import com.project.event_master.domain.entities.CommentEntity;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 import com.project.event_master.dtos.comment.CreateCommentDTO;
+import com.project.event_master.dtos.comment.UpdateCommentDTO;
 
 @Mapper(config = BaseMapperConfig.class)
 public interface CommentMapper {
@@ -18,6 +19,6 @@ public interface CommentMapper {
 
     List<CommentResponseDTO> toDtoList(List<CommentEntity> entities);
 
-    void updateEntityFromDto(CommentResponseDTO dto, @MappingTarget CommentEntity entity);
+    void updateEntityFromDto(UpdateCommentDTO dto, @MappingTarget CommentEntity entity);
 
 }
