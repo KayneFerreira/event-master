@@ -13,7 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.application.services.EventService;
+import com.project.event_master.application.usecases.event.CreateEventUseCase;
+import com.project.event_master.application.usecases.event.DeleteEventUseCase;
+import com.project.event_master.application.usecases.event.FindAllEventsUseCase;
+import com.project.event_master.application.usecases.event.FindEventByIdUseCase;
+import com.project.event_master.application.usecases.event.UpdateEventInput;
+import com.project.event_master.application.usecases.event.UpdateEventUseCase;
 import com.project.event_master.dtos.event.CreateEventDTO;
 import com.project.event_master.dtos.event.EventResponseDTO;
 import com.project.event_master.dtos.event.UpdateEventDTO;
@@ -23,40 +28,55 @@ import com.project.event_master.dtos.event.UpdateEventDTO;
 public class EventController {
 
     // DEPENDENCY INJECTION
-    private final EventService service;
+    private final CreateEventUseCase createNewEvent;
+    private final FindAllEventsUseCase findAllEvents;
+    private final FindEventByIdUseCase findEventById;
+    private final UpdateEventUseCase updateEvent;
+    private final DeleteEventUseCase deleteEvent;
 
-    private EventController(EventService service) {
-        this.service = service;
+    private EventController(
+                    CreateEventUseCase createNewEvent,
+                    FindAllEventsUseCase findAllEvents,
+                    FindEventByIdUseCase findEventById,
+                    UpdateEventUseCase updateEvent,
+                    DeleteEventUseCase deleteEvent
+                    ) {
+        this.createNewEvent = createNewEvent;
+        this.findAllEvents = findAllEvents;
+        this.findEventById = findEventById;
+        this.updateEvent = updateEvent;
+        this.deleteEvent = deleteEvent;
     }
 
     @PostMapping
     public ResponseEntity<EventResponseDTO> createNewEvent(@RequestBody CreateEventDTO event) {
-        EventResponseDTO response = service.createNewEvent(event);
+        EventResponseDTO response = createNewEvent.execute(event);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
     public ResponseEntity<List<EventResponseDTO>> findAllEvents() {
-        List<EventResponseDTO> response = service.findAllEvents();
+        List<EventResponseDTO> response = findAllEvents.execute(null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<EventResponseDTO> findEventById(@PathVariable Long id) {
-        EventResponseDTO response = service.findEventById(id);
+        EventResponseDTO response = findEventById.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<EventResponseDTO> updateEvent(@RequestBody UpdateEventDTO event, 
                                                         @PathVariable Long id) {
-        EventResponseDTO response = service.updateEvent(event, id);
+        UpdateEventInput eventInput = new UpdateEventInput(id, event);
+        EventResponseDTO response = updateEvent.execute(eventInput);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
-        service.deleteEvent(id);
+        deleteEvent.execute(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

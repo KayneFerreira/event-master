@@ -29,7 +29,7 @@ public class UpdateUserUseCase implements UseCase<UpdateUserInput, UserResponseD
         }
         UserEntity userToUpdate = service.findUserById(userInput.getId());
         mapper.updateEntityFromDto(newUser, userToUpdate);
-        return mapper.toDto(service.updateUser(userToUpdate, userInput.getId()));
+        return mapper.toDto(service.updateUser(userToUpdate));
     }
 
 }

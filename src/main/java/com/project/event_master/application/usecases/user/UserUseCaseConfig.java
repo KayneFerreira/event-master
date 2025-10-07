@@ -1,19 +1,14 @@
-package com.project.event_master.application.usecases;
+package com.project.event_master.application.usecases.user;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.project.event_master.application.services.UserService;
-import com.project.event_master.application.usecases.user.CreateUserUseCase;
-import com.project.event_master.application.usecases.user.DeleteUserUseCase;
-import com.project.event_master.application.usecases.user.FindAllUsersUseCase;
-import com.project.event_master.application.usecases.user.FindUserByIdUseCase;
-import com.project.event_master.application.usecases.user.UpdateUserUseCase;
 import com.project.event_master.mappers.UserMapper;
 import com.project.event_master.validation.CPFValidation;
 
 @Configuration
-public class UseCaseConfig {
+public class UserUseCaseConfig {
 
     @Bean
     public CreateUserUseCase createUserUseCase(UserService service, UserMapper mapper, CPFValidation validation) {

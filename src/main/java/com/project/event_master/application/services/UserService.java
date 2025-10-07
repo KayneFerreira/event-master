@@ -31,7 +31,7 @@ public class UserService {
             .orElseThrow(() -> new RecordNotFoundException("Usuário", id));
     }
 
-    public UserEntity updateUser(UserEntity user, Long id) {
+    public UserEntity updateUser(UserEntity user) {
         return repository.save(user);
     }
 
