@@ -11,7 +11,6 @@ import com.project.event_master.validation.CPFValidation;
 
 public class CreateUserUseCase implements UseCase<CreateUserDTO, UserResponseDTO>{
 
-    // DEPENDENCY INJECTION
     private final UserService service;
     private final UserMapper mapper;
     private final CPFValidation validation;

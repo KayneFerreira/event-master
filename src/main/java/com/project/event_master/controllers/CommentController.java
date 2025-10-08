@@ -28,7 +28,6 @@ import com.project.event_master.dtos.comment.UpdateCommentDTO;
 @RequestMapping("/api/users/{userId}/events/{eventId}/comments")
 public class CommentController {
 
-    // DEPENDENCY INJECTION
 	private final CreateCommentUseCase createNewComment;
     private final FindAllCommentsByEventUseCase findAllCommentsByEvent;
     private final FindCommentByIdUseCase findCommentById;

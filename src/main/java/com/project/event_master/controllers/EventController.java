@@ -27,7 +27,6 @@ import com.project.event_master.dtos.event.UpdateEventDTO;
 @RequestMapping("/api/test/events")
 public class EventController {
 
-    // DEPENDENCY INJECTION
     private final CreateEventUseCase createNewEvent;
     private final FindAllEventsUseCase findAllEvents;
     private final FindEventByIdUseCase findEventById;

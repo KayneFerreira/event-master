@@ -1,10 +1,10 @@
 package com.project.event_master.application.usecases.comment;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.project.event_master.application.services.CommentService;
 import com.project.event_master.application.usecases.UseCase;
-import com.project.event_master.domain.entities.CommentEntity;
 import com.project.event_master.dtos.comment.CommentResponseDTO;
 import com.project.event_master.mappers.CommentMapper;
 
@@ -19,8 +19,10 @@ public class FindAllCommentsByEventUseCase implements UseCase<Long, List<Comment
 	}
 	
 	public List<CommentResponseDTO> execute(Long eventId) {
-		List<CommentEntity> comments = service.findAllCommentsByEventId(eventId);
-		return mapper.toDtoList(comments);
+		return service.findAllCommentsByEventId(eventId)
+						.stream()
+						.map(comment -> mapper.toDto(comment))
+						.collect(Collectors.toList());
 	}
 
 }

@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 import com.project.event_master.dtos.address.AddressResponseDTO;
-import com.project.event_master.dtos.comment.CommentResponseDTO;
 
 public class EventResponseDTO {
 
@@ -24,11 +23,11 @@ public class EventResponseDTO {
 
     private final AddressResponseDTO address;
 
-    private final List<CommentResponseDTO> comments;
+    private final List<EventCommentDisplayDTO> comments;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public EventResponseDTO(Long id, String title, AddressResponseDTO address, List<CommentResponseDTO> comments) {
+    public EventResponseDTO(Long id, String title, AddressResponseDTO address, List<EventCommentDisplayDTO> comments) {
         this.id = id;
         this.title = title;
         this.address = address;
@@ -49,7 +48,7 @@ public class EventResponseDTO {
         return address;
     }
 
-    public List<CommentResponseDTO> getComments() {
+    public List<EventCommentDisplayDTO> getComments() {
         return comments;
     }
 

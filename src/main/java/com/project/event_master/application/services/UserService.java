@@ -11,7 +11,6 @@ import com.project.event_master.exceptions.RecordNotFoundException;
 @Service
 public class UserService {
 
-    // DEPENDENCY INJECTION
     private final UserRepository repository;
 
     private UserService(UserRepository repository) {

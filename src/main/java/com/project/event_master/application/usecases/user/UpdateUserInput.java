@@ -12,7 +12,6 @@ public class UpdateUserInput {
         this.dto = dto;
     }
 
-    // GETTERS
     public Long getId() {
         return id;
     }

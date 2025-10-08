@@ -7,7 +7,6 @@ import com.project.event_master.mappers.UserMapper;
 
 public class FindUserByIdUseCase implements UseCase<Long, UserResponseDTO> {
 
-    // DEPENDENCY INJECTION
     private final UserService service;
     private final UserMapper mapper;
 

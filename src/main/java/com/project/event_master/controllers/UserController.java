@@ -27,7 +27,6 @@ import com.project.event_master.dtos.user.UserResponseDTO;
 @RequestMapping("/api/test/users")
 public class UserController {
 
-    // DEPENDENCY INJECTION
     private final CreateUserUseCase createNewUser;
     private final FindAllUsersUseCase findAllUsers;
     private final FindUserByIdUseCase findUserById;

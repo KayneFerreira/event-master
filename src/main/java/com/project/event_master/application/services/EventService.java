@@ -11,7 +11,6 @@ import com.project.event_master.exceptions.RecordNotFoundException;
 @Service
 public class EventService {
 
-    // DEPENDENCY INJECTION 
     private final EventRepository repository;
 
     private EventService(EventRepository repository) {
