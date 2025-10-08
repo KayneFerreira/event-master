@@ -22,12 +22,12 @@ public class UpdateUserUseCase implements UseCase<UpdateUserInput, UserResponseD
         this.validation = validation;
     }
 
-    public UserResponseDTO execute(UpdateUserInput userInput) {
-        UpdateUserDTO newUser = userInput.getDto();
+    public UserResponseDTO execute(UpdateUserInput userData) {
+        UpdateUserDTO newUser = userData.getDto();
         if (newUser.getCpf() != null && !validation.validateCPF(newUser.getCpf())) {
             throw new ValidationException("Número de CPF inválido!");
         }
-        UserEntity userToUpdate = service.findUserById(userInput.getId());
+        UserEntity userToUpdate = service.findUserById(userData.getId());
         mapper.updateEntityFromDto(newUser, userToUpdate);
         return mapper.toDto(service.updateUser(userToUpdate));
     }

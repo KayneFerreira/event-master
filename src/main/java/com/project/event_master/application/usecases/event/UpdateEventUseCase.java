@@ -17,9 +17,9 @@ public class UpdateEventUseCase implements UseCase<UpdateEventInput, EventRespon
         this.mapper = mapper;
     }
 
-    public EventResponseDTO execute(UpdateEventInput eventInput) {
-        UpdateEventDTO newEvent = eventInput.getDto();
-        EventEntity eventToUpdate = service.findEventById(eventInput.getId());
+    public EventResponseDTO execute(UpdateEventInput eventData) {
+        UpdateEventDTO newEvent = eventData.getDto();
+        EventEntity eventToUpdate = service.findEventById(eventData.getId());
         mapper.updateEntityFromDto(newEvent, eventToUpdate);
         return mapper.toDto(service.updateEvent(eventToUpdate));
     }
