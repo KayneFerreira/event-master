@@ -3,10 +3,13 @@ package com.project.event_master.domain.entities;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.project.event_master.domain.enums.UserRoles;
 import com.project.event_master.domain.valueobjects.PhysicalAddress;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,6 +37,12 @@ public class UserEntity {
     private String name;
     private LocalDate birthDate;
     private String cpf;
+    
+    private String username;
+    private String password;
+    
+    @Enumerated(EnumType.STRING)
+    private UserRoles role;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
@@ -60,6 +69,18 @@ public class UserEntity {
         return cpf;
     }
 
+    public String getUsername() {
+    	return username;
+    }
+    
+    public String getPassword() {
+    	return password;
+    }
+    
+    public UserRoles getRole() {
+    	return role;
+    }
+    
     public PhysicalAddress getAddress() {
         return address;
     }
@@ -82,35 +103,47 @@ public class UserEntity {
         this.cpf = cpf;
     }
 
+    public void setUsername(String username) {
+    	this.username = username;
+    }
+    
+    public void setPassword(String password) {
+    	this.password = password;
+    }
+    
+    public void setRole(UserRoles role) {
+    	this.role = role;
+    }
+    
     public void setAddress(PhysicalAddress address) {
         this.address = address;
     }
 
     // TO STRING ------------------------------------------------------------------------
 
-    @Override
-    public String toString() {
-        return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate 
-                + ", cpf=" + cpf + ", address=" + address + "]";
-    }
+	@Override
+	public String toString() {
+		return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", username="
+				+ username + ", password=" + password + ", role=" + role + ", address=" + address + "]";
+	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
     
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UserEntity other = (UserEntity) obj;
-        return Objects.equals(id, other.id);
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserEntity other = (UserEntity) obj;
+		return Objects.equals(id, other.id);
+	}
 
 }

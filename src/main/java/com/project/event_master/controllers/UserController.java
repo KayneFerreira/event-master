@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.event_master.application.usecases.user.CreateUserUseCase;
+import com.project.event_master.application.usecases.user.RegisterUserUseCase;
 import com.project.event_master.application.usecases.user.DeleteUserUseCase;
 import com.project.event_master.application.usecases.user.FindAllUsersUseCase;
 import com.project.event_master.application.usecases.user.FindUserByIdUseCase;
 import com.project.event_master.application.usecases.user.UpdateUserInput;
 import com.project.event_master.application.usecases.user.UpdateUserUseCase;
-import com.project.event_master.dtos.user.CreateUserDTO;
+import com.project.event_master.dtos.user.RegisterUserDTO;
 import com.project.event_master.dtos.user.UpdateUserDTO;
 import com.project.event_master.dtos.user.UserResponseDTO;
 
@@ -27,13 +27,13 @@ import com.project.event_master.dtos.user.UserResponseDTO;
 @RequestMapping("/api/test/users")
 public class UserController {
 
-    private final CreateUserUseCase createNewUser;
+    private final RegisterUserUseCase createNewUser;
     private final FindAllUsersUseCase findAllUsers;
     private final FindUserByIdUseCase findUserById;
     private final UpdateUserUseCase updateUser;
     private final DeleteUserUseCase deleteUser;
 
-    private UserController(CreateUserUseCase createNewUser,
+    private UserController(RegisterUserUseCase createNewUser,
                             FindAllUsersUseCase findAllUsers,
                             FindUserByIdUseCase findUserById,
                             UpdateUserUseCase updateUser,
@@ -46,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponseDTO> createNewUser(@RequestBody CreateUserDTO user) {
+    public ResponseEntity<UserResponseDTO> createNewUser(@RequestBody RegisterUserDTO user) {
         UserResponseDTO response = createNewUser.execute(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

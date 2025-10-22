@@ -3,9 +3,10 @@ package com.project.event_master.dtos.user;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.project.event_master.domain.enums.UserRoles;
 import com.project.event_master.dtos.address.CreateAddressDTO;
 
-public class CreateUserDTO {
+public class RegisterUserDTO {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
@@ -20,12 +21,16 @@ public class CreateUserDTO {
     private String name;
     private LocalDate birthDate;
     private String cpf;
+    
+    private String username;
+    private String password;
+    private UserRoles role;
 
     private CreateAddressDTO address;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public CreateUserDTO() {}
+    public RegisterUserDTO() {}
 
     // GETTERS --------------------------------------------------------------------------
 
@@ -44,10 +49,22 @@ public class CreateUserDTO {
     public CreateAddressDTO getAddress() {
         return address;
     }
+    
+    public String getUsername() {
+		return username;
+	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public UserRoles getRole() {
+		return role;
+	}
+	
     // SETTERS --------------------------------------------------------------------------
 
-    public void setName(String name) {
+	public void setName(String name) {
         this.name = name;
     }
 
@@ -63,32 +80,47 @@ public class CreateUserDTO {
         this.address = address;
     }
 
+    public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setRole(UserRoles role) {
+		this.role = role;
+	}
+	
     // TO STRING ------------------------------------------------------------------------
 
-    @Override
-    public String toString() {
-        return "CreateUserDTO [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf 
-                + ", address=" + address + "]";
-    }
+	@Override
+	public String toString() {
+		return "RegisterUserDTO [name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf 
+				+ ", username=" + username + ", password=" + password + ", role=" + role 
+				+ ", address=" + address + "]";
+	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, birthDate, cpf, address);
-    }
+	public int hashCode() {
+		return Objects.hash(address, birthDate, cpf, name, password, role, username);
+	}
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CreateUserDTO other = (CreateUserDTO) obj;
-        return Objects.equals(name, other.name) && Objects.equals(birthDate, other.birthDate)
-                && Objects.equals(cpf, other.cpf) && Objects.equals(address, other.address);
-    }
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RegisterUserDTO other = (RegisterUserDTO) obj;
+		return Objects.equals(address, other.address) && Objects.equals(birthDate, other.birthDate)
+				&& Objects.equals(cpf, other.cpf) && Objects.equals(name, other.name)
+				&& Objects.equals(password, other.password) && role == other.role
+				&& Objects.equals(username, other.username);
+	}
 
 }

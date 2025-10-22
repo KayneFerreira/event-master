@@ -10,27 +10,27 @@ import com.project.event_master.mappers.EventMapper;
 public class EventUseCaseConfig {
 
     @Bean
-    public CreateEventUseCase createEventUseCase(EventService service, EventMapper mapper) {
+    CreateEventUseCase createEventUseCase(EventService service, EventMapper mapper) {
         return new CreateEventUseCase(service, mapper);
     }
 
     @Bean
-    public FindAllEventsUseCase findAllEventsUseCase(EventService service, EventMapper mapper) {
+    FindAllEventsUseCase findAllEventsUseCase(EventService service, EventMapper mapper) {
         return new FindAllEventsUseCase(service, mapper);
     }
 
     @Bean
-    public FindEventByIdUseCase findEventByIdUseCase(EventService service, EventMapper mapper) {
+    FindEventByIdUseCase findEventByIdUseCase(EventService service, EventMapper mapper) {
         return new FindEventByIdUseCase(service, mapper);
     }
 
     @Bean
-    public UpdateEventUseCase updateEventUseCase(EventService service, EventMapper mapper) {
+    UpdateEventUseCase updateEventUseCase(EventService service, EventMapper mapper) {
         return new UpdateEventUseCase(service, mapper);
     }
 
     @Bean
-    public DeleteEventUseCase deleteEventUseCase(EventService service) {
+    DeleteEventUseCase deleteEventUseCase(EventService service) {
         return new DeleteEventUseCase(service);
     }
 

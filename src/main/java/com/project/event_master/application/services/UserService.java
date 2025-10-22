@@ -7,13 +7,14 @@ import org.springframework.stereotype.Service;
 import com.project.event_master.domain.entities.UserEntity;
 import com.project.event_master.domain.repositories.UserRepository;
 import com.project.event_master.exceptions.RecordNotFoundException;
+import com.project.event_master.exceptions.UsernameAvailableException;
 
 @Service
 public class UserService {
 
     private final UserRepository repository;
 
-    private UserService(UserRepository repository) {
+    public UserService(UserRepository repository) {
         this.repository = repository;
     }
 
@@ -24,10 +25,21 @@ public class UserService {
     public List<UserEntity> findAllUsers() {
         return repository.findAll();
     }
-
+    
     public UserEntity findUserById(Long id) {
-        return repository.findById(id)
-            .orElseThrow(() -> new RecordNotFoundException("Usuário", id));
+    	return repository.findById(id)
+    			.orElseThrow(() -> new RecordNotFoundException("Usuário", id));
+    }
+
+    public UserEntity findUserByUsername(String username) {
+        return repository.findByUsername(username)
+            .orElseThrow(() -> new UsernameAvailableException(username));
+    }
+    
+    public void usernameExists(String username) {
+    	if (repository.existsByUsername(username)) {
+    		throw new UsernameAvailableException(username);
+    	}
     }
 
     public UserEntity updateUser(UserEntity user) {

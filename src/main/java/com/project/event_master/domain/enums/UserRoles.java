@@ -1,15 +1,14 @@
 package com.project.event_master.domain.enums;
 
-public enum AccessLevel {
+public enum UserRoles {
 
-    USER(1, "Usuário"),
-    MOD(2, "Moderador"),
-    ADMIN(3, "Administrador");
+    ROLE_USER(1, "Usuário"),
+    ROLE_ADMIN(2, "Administrador");
 
     private int code;
     private String text;
 
-    private AccessLevel(int code, String text) {
+    private UserRoles(int code, String text) {
         this.code = code;
         this.text = text;
     }
@@ -22,8 +21,8 @@ public enum AccessLevel {
         return text;
     }
 
-    public static AccessLevel fromCode(int code) {
-        for (AccessLevel level : AccessLevel.values()) {
+    public static UserRoles fromCode(int code) {
+        for (UserRoles level : UserRoles.values()) {
             if (level.code == code) {
                 return level;
             }
