@@ -24,7 +24,7 @@ import com.project.event_master.dtos.user.UpdateUserDTO;
 import com.project.event_master.dtos.user.UserResponseDTO;
 
 @RestController
-@RequestMapping("/api/test/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final RegisterUserUseCase createNewUser;

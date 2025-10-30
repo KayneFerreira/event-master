@@ -24,7 +24,7 @@ import com.project.event_master.dtos.event.EventResponseDTO;
 import com.project.event_master.dtos.event.UpdateEventDTO;
 
 @RestController
-@RequestMapping("/api/test/events")
+@RequestMapping("/api/events")
 public class EventController {
 
     private final CreateEventUseCase createNewEvent;
