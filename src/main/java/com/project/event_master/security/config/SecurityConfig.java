@@ -33,7 +33,8 @@ public class SecurityConfig {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.POST, "/api/test/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/test/auth/register").permitAll()
-						.anyRequest().authenticated()		// PERMIT ALL SOMENTE PARA TESTES
+						.requestMatchers(HttpMethod.POST, "/api/test/events").hasAnyRole("USER")
+						.anyRequest().authenticated()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();

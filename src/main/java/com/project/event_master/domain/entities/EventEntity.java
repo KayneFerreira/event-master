@@ -39,6 +39,9 @@ public class EventEntity {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private PhysicalAddress address;
+    
+    @ManyToOne
+    private UserEntity eventAuthor;
 
     @OneToMany(
         mappedBy = "event", 
@@ -69,6 +72,10 @@ public class EventEntity {
     public List<CommentEntity> getComments() {
         return comments;
     }
+    
+    public UserEntity getEventAuthor() {
+    	return eventAuthor;
+    }
 
     // SETTERS --------------------------------------------------------------------------
 
@@ -83,13 +90,18 @@ public class EventEntity {
     public void setAddress(PhysicalAddress address) {
         this.address = address;
     }
+    
+    public void setEventAuthor(UserEntity eventAuthor) {
+    	this.eventAuthor = eventAuthor;
+    }
 
     // TO STRING ------------------------------------------------------------------------
 
     @Override
-    public String toString() {
-        return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + "]";
-    }
+	public String toString() {
+		return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + ", eventAuthor="
+				+ eventAuthor + ", comments=" + comments + "]";
+	}
 
     // HASH CODE AND EQUALS--------------------------------------------------------------
 
