@@ -70,9 +70,8 @@ public class CommentController {
     @PutMapping("/{commentId}")
     public ResponseEntity<CommentResponseDTO> updateComment(@RequestBody UpdateCommentDTO comment, 
                                                             @PathVariable Long commentId,
-                                                            @PathVariable Long userId,
                                                             @PathVariable Long eventId) {
-    	UpdateCommentInput commentData = new UpdateCommentInput(comment, commentId, userId, eventId);
+    	UpdateCommentInput commentData = new UpdateCommentInput(comment, commentId, eventId);
         CommentResponseDTO response = updateComment.execute(commentData);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }

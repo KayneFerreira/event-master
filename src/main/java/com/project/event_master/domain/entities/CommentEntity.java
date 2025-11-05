@@ -102,9 +102,8 @@ public class CommentEntity {
 
     @Override
 	public String toString() {
-		return "CommentEntity [id=" + id + ", text=" + text + ", commentAuthor=" 
-				+ commentAuthor + ", commentEvent=" + commentEvent + ", createdAt=" 
-				+ createdAt + ", editedAt=" + editedAt + "]";
+		return "CommentEntity [id=" + id + ", text=" + text + ", createdAt=" + createdAt 
+				+ ", editedAt=" + editedAt + "]";
 	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------

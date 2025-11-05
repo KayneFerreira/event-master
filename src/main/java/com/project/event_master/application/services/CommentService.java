@@ -30,7 +30,7 @@ public class CommentService {
             .orElseThrow(() -> new RecordNotFoundException("Comentário", commentId));
     }
 
-    public CommentEntity updateComment(CommentEntity updatedComment) {
+    public CommentEntity updateComment(CommentEntity updatedComment, Long commentId) {
     	return repository.save(updatedComment);
     }
 

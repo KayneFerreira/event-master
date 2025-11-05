@@ -7,13 +7,11 @@ public class UpdateCommentInput {
 	private final UpdateCommentDTO dto;
 	private final Long eventId;
 	private final Long commentId;
-	private final Long userId;
 	
-	public UpdateCommentInput(UpdateCommentDTO dto, Long eventId, Long commentId, Long userId) {
+	public UpdateCommentInput(UpdateCommentDTO dto, Long eventId, Long commentId) {
 		this.dto = dto;
 		this.eventId = eventId;
 		this.commentId = commentId;
-		this.userId = userId;
 	}
 
 	public UpdateCommentDTO getDto() {
@@ -28,8 +26,4 @@ public class UpdateCommentInput {
 		return commentId;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
-	
 }
