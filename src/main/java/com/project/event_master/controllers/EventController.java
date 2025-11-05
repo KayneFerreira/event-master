@@ -19,8 +19,9 @@ import com.project.event_master.application.usecases.event.FindAllEventsUseCase;
 import com.project.event_master.application.usecases.event.FindEventByIdUseCase;
 import com.project.event_master.application.usecases.event.UpdateEventInput;
 import com.project.event_master.application.usecases.event.UpdateEventUseCase;
+import com.project.event_master.dtos.event.AllEventsResponseDTO;
 import com.project.event_master.dtos.event.CreateEventDTO;
-import com.project.event_master.dtos.event.EventResponseDTO;
+import com.project.event_master.dtos.event.SingleEventResponseDTO;
 import com.project.event_master.dtos.event.UpdateEventDTO;
 
 @RestController
@@ -48,28 +49,28 @@ public class EventController {
     }
 
     @PostMapping
-    public ResponseEntity<EventResponseDTO> createNewEvent(@RequestBody CreateEventDTO event) {
-        EventResponseDTO response = createNewEvent.execute(event);
+    public ResponseEntity<AllEventsResponseDTO> createNewEvent(@RequestBody CreateEventDTO event) {
+    	AllEventsResponseDTO response = createNewEvent.execute(event);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
-    public ResponseEntity<List<EventResponseDTO>> findAllEvents() {
-        List<EventResponseDTO> response = findAllEvents.execute(null);
+    public ResponseEntity<List<AllEventsResponseDTO>> findAllEvents() {
+        List<AllEventsResponseDTO> response = findAllEvents.execute(null);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EventResponseDTO> findEventById(@PathVariable Long id) {
-        EventResponseDTO response = findEventById.execute(id);
+    public ResponseEntity<SingleEventResponseDTO> findEventById(@PathVariable Long id) {
+        SingleEventResponseDTO response = findEventById.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EventResponseDTO> updateEvent(@RequestBody UpdateEventDTO event, 
+    public ResponseEntity<SingleEventResponseDTO> updateEvent(@RequestBody UpdateEventDTO event, 
                                                         @PathVariable Long id) {
         UpdateEventInput eventInput = new UpdateEventInput(id, event);
-        EventResponseDTO response = updateEvent.execute(eventInput);
+        SingleEventResponseDTO response = updateEvent.execute(eventInput);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

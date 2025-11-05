@@ -29,13 +29,15 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity
 				.csrf(csrf -> csrf.disable())
+				.headers(headers -> headers.frameOptions(frame -> frame.disable()))		// REMOVE AFTER TESTS
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(auth -> auth
+						.requestMatchers("/h2-console/**").permitAll()		// REMOVE AFTER TESTS
 						.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/events").hasAnyRole("USER")
-						.requestMatchers(HttpMethod.POST, "/api/users/{userId}/events/{eventId}/").hasAnyRole("USER")
-						.anyRequest().authenticated()
+						.requestMatchers(HttpMethod.POST, "/api/events/*/comments/**").hasAnyRole("USER")
+						.anyRequest().permitAll()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();

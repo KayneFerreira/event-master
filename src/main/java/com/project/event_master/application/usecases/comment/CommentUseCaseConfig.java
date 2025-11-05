@@ -15,8 +15,8 @@ public class CommentUseCaseConfig {
     CreateCommentUseCase createCommentUseCase(CommentService commentService,
     												UserService userService,
     												EventService eventService,
-    												CommentMapper mapper) {
-        return new CreateCommentUseCase(commentService, userService, eventService, mapper);
+    												CommentMapper commentMapper) {
+        return new CreateCommentUseCase(commentService, userService, eventService, commentMapper);
     }
     
     @Bean

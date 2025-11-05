@@ -3,7 +3,6 @@ package com.project.event_master.dtos.event;
 import java.util.Objects;
 
 import com.project.event_master.dtos.address.CreateAddressDTO;
-import com.project.event_master.dtos.user.EventAuthorDTO;
 
 public class CreateEventDTO {
 
@@ -19,7 +18,7 @@ public class CreateEventDTO {
      */
     private String title;
 
-    private CreateAddressDTO address;
+    private CreateAddressDTO eventAddress;
     
     private EventAuthorDTO eventAuthor;
 
@@ -33,8 +32,8 @@ public class CreateEventDTO {
         return title;
     }
 
-    public CreateAddressDTO getAddress() {
-        return address;
+    public CreateAddressDTO getEventAddress() {
+        return eventAddress;
     }
 
     public EventAuthorDTO getEventAuthor() {
@@ -47,8 +46,8 @@ public class CreateEventDTO {
         this.title = title;
     }
 
-    public void setAddress(CreateAddressDTO address) {
-        this.address = address;
+    public void setEventAddress(CreateAddressDTO eventAddress) {
+        this.eventAddress = eventAddress;
     }
 
 	public void setEventAuthor(EventAuthorDTO eventAuthor) {
@@ -59,14 +58,14 @@ public class CreateEventDTO {
 
     @Override
 	public String toString() {
-		return "CreateEventDTO [title=" + title + ", address=" + address + ", eventAuthor=" + eventAuthor + "]";
+		return "CreateEventDTO [title=" + title + ", eventAddress=" + eventAddress + ", eventAuthor=" + eventAuthor + "]";
 	}
 
     // HASH CODE AND EQUALS--------------------------------------------------------------
 
     @Override
 	public int hashCode() {
-		return Objects.hash(address, eventAuthor, title);
+		return Objects.hash(eventAddress, eventAuthor, title);
 	}
 
     @Override
@@ -78,7 +77,7 @@ public class CreateEventDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		CreateEventDTO other = (CreateEventDTO) obj;
-		return Objects.equals(address, other.address) && Objects.equals(eventAuthor, other.eventAuthor)
+		return Objects.equals(eventAddress, other.eventAddress) && Objects.equals(eventAuthor, other.eventAuthor)
 				&& Objects.equals(title, other.title);
 	}
 

@@ -2,10 +2,10 @@ package com.project.event_master.application.usecases.event;
 
 import com.project.event_master.application.services.EventService;
 import com.project.event_master.application.usecases.UseCase;
-import com.project.event_master.dtos.event.EventResponseDTO;
+import com.project.event_master.dtos.event.SingleEventResponseDTO;
 import com.project.event_master.mappers.EventMapper;
 
-public class FindEventByIdUseCase implements UseCase<Long, EventResponseDTO> {
+public class FindEventByIdUseCase implements UseCase<Long, SingleEventResponseDTO> {
 
     private final EventService service;
     private final EventMapper mapper;
@@ -15,8 +15,8 @@ public class FindEventByIdUseCase implements UseCase<Long, EventResponseDTO> {
         this.mapper = mapper;
     }
 
-    public EventResponseDTO execute(Long id) {
-        return mapper.toDto(service.findEventById(id));
+    public SingleEventResponseDTO execute(Long id) {
+        return mapper.toSingleEventDto(service.findEventById(id));
     }
     
 }

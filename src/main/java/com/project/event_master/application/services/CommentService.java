@@ -17,12 +17,12 @@ public class CommentService {
         this.repository = repository;
     }
 
-    public CommentEntity createNewComment(CommentEntity newComment) {
+    public CommentEntity saveNewComment(CommentEntity newComment) {
         return repository.save(newComment);
     }
 
     public List<CommentEntity> findAllCommentsByEventId(Long eventId) {
-        return repository.findByEventId(eventId);
+        return repository.findByCommentEvent_Id(eventId);
     }
 
     public CommentEntity findCommentById(Long commentId) {

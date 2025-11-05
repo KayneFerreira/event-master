@@ -11,20 +11,20 @@ public class CommentResponseDTO {
 
     private final String text;
 
-    private final CommentAuthorDTO author;
-    private final CommentEventDTO event;
+    private final CommentAuthorDTO commentAuthor;
+    private final CommentEventDTO commentEvent;
 
     private final Instant createdAt;
     private final Instant editedAt;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public CommentResponseDTO(Long id, String text, CommentAuthorDTO author, 
-            CommentEventDTO event, Instant createdAt, Instant editedAt) {
+    public CommentResponseDTO(Long id, String text, CommentAuthorDTO commentAuthor, 
+            CommentEventDTO commentEvent, Instant createdAt, Instant editedAt) {
         this.id = id;
         this.text = text;
-        this.author = author;
-        this.event = event;
+        this.commentAuthor = commentAuthor;
+        this.commentEvent = commentEvent;
         this.createdAt = createdAt;
         this.editedAt = editedAt;
     }
@@ -39,12 +39,12 @@ public class CommentResponseDTO {
         return text;
     }
 
-    public CommentAuthorDTO getAuthor() {
-        return author;
+    public CommentAuthorDTO getCommentAuthor() {
+        return commentAuthor;
     }
 
-    public CommentEventDTO getEvent() {
-        return event;
+    public CommentEventDTO getCommentEvent() {
+        return commentEvent;
     }
 
     public Instant getCreatedAt() {
@@ -58,16 +58,17 @@ public class CommentResponseDTO {
     // TO STRING ------------------------------------------------------------------------
 
     @Override
-    public String toString() {
-        return "CommentEntity [id = " + id + ", text=" + text + ", author=" + author 
-                + ", event=" + event + ", createdAt=" + createdAt + ", edited=" + editedAt + "]";
-    }
+	public String toString() {
+		return "CommentResponseDTO [id=" + id + ", text=" + text + ", commentAuthor=" 
+				+ commentAuthor + ", commentEvent=" + commentEvent + ", createdAt=" 
+				+ createdAt + ", editedAt=" + editedAt + "]";
+	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, text, author, event, createdAt, editedAt);
+        return Objects.hash(id, text, commentAuthor, commentEvent, createdAt, editedAt);
     }
 
     @Override
@@ -79,8 +80,8 @@ public class CommentResponseDTO {
         if (getClass() != obj.getClass())
             return false;
         CommentResponseDTO other = (CommentResponseDTO) obj;
-        return Objects.equals(id, other.id) && Objects.equals(text, other.text) && Objects.equals(author, other.author)
-                && Objects.equals(event, other.event) && Objects.equals(createdAt, other.createdAt)
+        return Objects.equals(id, other.id) && Objects.equals(text, other.text) && Objects.equals(commentAuthor, other.commentAuthor)
+                && Objects.equals(commentEvent, other.commentEvent) && Objects.equals(createdAt, other.createdAt)
                 && Objects.equals(editedAt, other.editedAt);
     }
 

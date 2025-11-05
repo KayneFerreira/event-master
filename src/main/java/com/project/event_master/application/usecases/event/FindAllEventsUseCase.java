@@ -5,23 +5,23 @@ import java.util.stream.Collectors;
 
 import com.project.event_master.application.services.EventService;
 import com.project.event_master.application.usecases.UseCase;
-import com.project.event_master.dtos.event.EventResponseDTO;
+import com.project.event_master.dtos.event.AllEventsResponseDTO;
 import com.project.event_master.mappers.EventMapper;
 
-public class FindAllEventsUseCase implements UseCase<Void, List<EventResponseDTO>> {
+public class FindAllEventsUseCase implements UseCase<Long, List<AllEventsResponseDTO>> {
 
-    private final EventService service;
-    private final EventMapper mapper;
+    private final EventService eventService;
+    private final EventMapper eventMapper;
 
-    public FindAllEventsUseCase(EventService service, EventMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
+    public FindAllEventsUseCase(EventService eventService, EventMapper eventMapper) {
+        this.eventService = eventService;
+        this.eventMapper = eventMapper;
     }
 
-    public List<EventResponseDTO> execute(Void input) {
-        return service.findAllEvents()
+    public List<AllEventsResponseDTO> execute(Long eventId) {
+    	return eventService.findAllEvents()
                         .stream()
-                        .map(event -> mapper.toDto(event))
+                        .map(event -> eventMapper.toAllEventsDto(event))
                         .collect(Collectors.toList());
     }
     

@@ -16,7 +16,7 @@ import com.project.event_master.dtos.user.UserResponseDTO;
 
 
 @RestController
-@RequestMapping("/api/test/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 	
 	private final RegisterUserUseCase registerUser;

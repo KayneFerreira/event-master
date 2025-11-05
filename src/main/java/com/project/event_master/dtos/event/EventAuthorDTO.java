@@ -1,11 +1,11 @@
-package com.project.event_master.dtos.user;
+package com.project.event_master.dtos.event;
 
 import java.util.Objects;
 
 public class EventAuthorDTO {
 	
 	private Long id;
-	private String username;
+	private String name;
 	
 	public EventAuthorDTO () {}
 	
@@ -15,8 +15,8 @@ public class EventAuthorDTO {
 		return id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getName() {
+		return name;
 	}
 	
 	// SETTERS --------------------------------------------------------------------------
@@ -25,20 +25,20 @@ public class EventAuthorDTO {
 		this.id = id;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	// OTHERS ---------------------------------------------------------------------------
 	
 	@Override
 	public String toString() {
-		return "EventAuthorDTO [id=" + id + ", username=" + username + "]";
+		return "EventAuthorDTO [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, username);
+		return Objects.hash(id, name);
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class EventAuthorDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		EventAuthorDTO other = (EventAuthorDTO) obj;
-		return Objects.equals(id, other.id) && Objects.equals(username, other.username);
+		return Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 
 }

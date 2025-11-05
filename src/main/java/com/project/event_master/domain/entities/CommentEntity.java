@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +26,17 @@ public class CommentEntity {
     private String text;
 
     @ManyToOne
-    private UserEntity author;
+    @JsonIgnoreProperties({
+        "birthDate",
+        "cpf",
+        "password",
+        "address"
+    })
+    private UserEntity commentAuthor;
 
     @ManyToOne
     @JsonBackReference
-    private EventEntity event;
+    private EventEntity commentEvent;
 
     private Instant createdAt;
 
@@ -49,12 +56,12 @@ public class CommentEntity {
         return text;
     }
 
-    public UserEntity getAuthor() {
-        return author;
+    public UserEntity getCommentAuthor() {
+        return commentAuthor;
     }
 
-    public EventEntity getEvent() {
-        return event;
+    public EventEntity getCommentEvent() {
+        return commentEvent;
     }
 
     public Instant getCreatedAt() {
@@ -75,12 +82,12 @@ public class CommentEntity {
         this.text = text;
     }
 
-    public void setAuthor(UserEntity author) {
-        this.author = author;
+    public void setCommentAuthor(UserEntity commentAuthor) {
+        this.commentAuthor = commentAuthor;
     }
 
-    public void setEvent(EventEntity event) {
-        this.event = event;
+    public void setCommentEvent(EventEntity commentEvent) {
+        this.commentEvent = commentEvent;
     }
 
     public void setCreatedAt() {
@@ -94,28 +101,29 @@ public class CommentEntity {
     // TO STRING ------------------------------------------------------------------------
 
     @Override
-    public String toString() {
-        return "CommentEntity [id=" + id + ", text=" + text + ", author=" + author 
-                + ", event=" + event + ", createdAt=" + createdAt + "edited=" + editedAt + "]";
-    }
+	public String toString() {
+		return "CommentEntity [id=" + id + ", text=" + text + ", commentAuthor=" 
+				+ commentAuthor + ", commentEvent=" + commentEvent + ", createdAt=" 
+				+ createdAt + ", editedAt=" + editedAt + "]";
+	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+	public int hashCode() {
+		return Objects.hash(id);
+	}
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CommentEntity other = (CommentEntity) obj;
-        return Objects.equals(id, other.id);
-    }
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommentEntity other = (CommentEntity) obj;
+		return Objects.equals(id, other.id);
+	}
 
 }

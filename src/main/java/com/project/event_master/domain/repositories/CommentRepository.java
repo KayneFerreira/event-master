@@ -8,7 +8,7 @@ import com.project.event_master.domain.entities.CommentEntity;
 
 public interface CommentRepository extends JpaRepository<CommentEntity, Long>{
 
-    List<CommentEntity> findByEventId(Long eventId);
+    List<CommentEntity> findByCommentEvent_Id(Long eventId);
 
 }
 

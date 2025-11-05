@@ -9,12 +9,12 @@ public class UpdateCommentDTO {
 
     private String text;
 
-    private CommentAuthorDTO author;
-    private CommentEventDTO event;
+    private CommentAuthorDTO commentAuthor;
+    private CommentEventDTO commentEvent;
 
     private Instant editedAt;
 
-    // DEFAULT CONSTRUCTOR --------------------------------------------------------------
+    // CONSTRUCTORS ---------------------------------------------------------------------
 
     public UpdateCommentDTO() {}
 
@@ -24,12 +24,12 @@ public class UpdateCommentDTO {
         return text;
     }
 
-    public CommentAuthorDTO getAuthor() {
-        return author;
+    public CommentAuthorDTO getCommentAuthor() {
+        return commentAuthor;
     }
 
-    public CommentEventDTO getEvent() {
-        return event;
+    public CommentEventDTO getCommentEvent() {
+        return commentEvent;
     }
 
     public Instant getEditedAt() {
@@ -42,12 +42,12 @@ public class UpdateCommentDTO {
         this.text = text;
     }
 
-    public void setAuthor(CommentAuthorDTO author) {
-        this.author = author;
+    public void setAuthor(CommentAuthorDTO commentAuthor) {
+        this.commentAuthor = commentAuthor;
     }
 
-    public void setEvent(CommentEventDTO event) {
-        this.event = event;
+    public void setCommentEvent(CommentEventDTO commentEvent) {
+        this.commentEvent = commentEvent;
     }
 
     public void setEditedAt(Instant editedAt) {
@@ -58,7 +58,7 @@ public class UpdateCommentDTO {
 
     @Override
     public String toString() {
-        return "CommentEntity [text=" + text + ", author=" + author + ", event=" + event 
+        return "CommentEntity [text=" + text + ", commentAuthor=" + commentAuthor + ", commentEvent=" + commentEvent 
                 + ", edited=" + editedAt + "]";
     }
 
@@ -66,7 +66,7 @@ public class UpdateCommentDTO {
 
     @Override
     public int hashCode() {
-        return Objects.hash(text, author, event, editedAt);
+        return Objects.hash(text, commentAuthor, commentEvent, editedAt);
     }
 
     @Override
@@ -78,8 +78,8 @@ public class UpdateCommentDTO {
         if (getClass() != obj.getClass())
             return false;
         UpdateCommentDTO other = (UpdateCommentDTO) obj;
-        return Objects.equals(text, other.text) && Objects.equals(author, other.author)
-                && Objects.equals(event, other.event) && Objects.equals(editedAt, other.editedAt);
+        return Objects.equals(text, other.text) && Objects.equals(commentAuthor, other.commentAuthor)
+                && Objects.equals(commentEvent, other.commentEvent) && Objects.equals(editedAt, other.editedAt);
     }
 
 }

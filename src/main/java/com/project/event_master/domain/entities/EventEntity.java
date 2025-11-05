@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.event_master.domain.valueobjects.PhysicalAddress;
 
@@ -38,18 +39,24 @@ public class EventEntity {
     private String title;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private PhysicalAddress address;
+    private PhysicalAddress eventAddress;
     
     @ManyToOne
+    @JsonIgnoreProperties({
+        "birthDate",
+        "cpf",
+        "password",
+        "address"
+    })
     private UserEntity eventAuthor;
 
     @OneToMany(
-        mappedBy = "event", 
+        mappedBy = "commentEvent", 
         cascade = CascadeType.ALL, 
         fetch = FetchType.LAZY
         )
     @JsonManagedReference
-    private List<CommentEntity> comments = new ArrayList<>();
+    private List<CommentEntity> eventComments = new ArrayList<>();
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
@@ -65,12 +72,12 @@ public class EventEntity {
         return title;
     }
 
-    public PhysicalAddress getAddress() {
-        return address;
+    public PhysicalAddress getEventAddress() {
+        return eventAddress;
     }
 
-    public List<CommentEntity> getComments() {
-        return comments;
+    public List<CommentEntity> getEventComments() {
+        return eventComments;
     }
     
     public UserEntity getEventAuthor() {
@@ -87,8 +94,8 @@ public class EventEntity {
         this.title = title;
     }
 
-    public void setAddress(PhysicalAddress address) {
-        this.address = address;
+    public void setEventAddress(PhysicalAddress eventAddress) {
+        this.eventAddress = eventAddress;
     }
     
     public void setEventAuthor(UserEntity eventAuthor) {
@@ -99,8 +106,8 @@ public class EventEntity {
 
     @Override
 	public String toString() {
-		return "EventEntity [id=" + id + ", title=" + title + ", address=" + address + ", eventAuthor="
-				+ eventAuthor + ", comments=" + comments + "]";
+		return "EventEntity [id=" + id + ", title=" + title + ", eventAddress=" + eventAddress 
+				+ ", eventAuthor=" + eventAuthor + ", eventComments=" + eventComments + "]";
 	}
 
     // HASH CODE AND EQUALS--------------------------------------------------------------

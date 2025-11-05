@@ -123,8 +123,8 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", name=" + name + ", birthDate=" + birthDate + ", cpf=" + cpf + ", username="
-				+ username + ", password=" + password + ", role=" + role + ", address=" + address + "]";
+		return "UserEntity [id=" + id + ", name=" + name + ", username=" + username 
+				+ ", role=" + role + "]";
 	}
 
     // HASH CODE AND EQUALS -------------------------------------------------------------

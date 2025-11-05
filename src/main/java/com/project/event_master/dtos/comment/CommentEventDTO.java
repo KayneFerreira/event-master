@@ -6,50 +6,50 @@ public class CommentEventDTO {
 
     // ATTRIBUTES -----------------------------------------------------------------------
 
-    private final Long id;
-    private final String title;
+    private final Long eventId;
+    private final String eventTitle;
 
     // CONSTRUCTORS ---------------------------------------------------------------------
 
-    public CommentEventDTO(Long id, String title) {
-        this.id = id;
-        this.title = title;
+    public CommentEventDTO(Long eventId, String eventTitle) {
+        this.eventId = eventId;
+        this.eventTitle = eventTitle;
     }
 
     // GETTERS --------------------------------------------------------------------------
 
-    public Long getId() {
-        return id;
+    public Long getEventId() {
+        return eventId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getEventTitle() {
+        return eventTitle;
     }
 
     // TO STRING ------------------------------------------------------------------------
 
     @Override
-    public String toString() {
-        return "EventEntity [id= " + id + ", title=" + title + "]";
-    }
+	public String toString() {
+		return "CommentEventDTO [eventId=" + eventId + ", eventTitle=" + eventTitle + "]";
+	}
 
     // HASH CODE AND EQUALS--------------------------------------------------------------
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id, title);
-    }
+	public int hashCode() {
+		return Objects.hash(eventId, eventTitle);
+	}
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CommentEventDTO other = (CommentEventDTO) obj;
-        return Objects.equals(id, other.id) && Objects.equals(title, other.title);
-    }
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommentEventDTO other = (CommentEventDTO) obj;
+		return Objects.equals(eventId, other.eventId) && Objects.equals(eventTitle, other.eventTitle);
+	}
 
 }

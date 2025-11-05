@@ -32,8 +32,8 @@ public class UpdateCommentUseCase implements UseCase<UpdateCommentInput, Comment
     	
     	CommentEntity commentToUpdate = commentService.findCommentById(commentId);
     	
-    	commentToUpdate.setAuthor(userService.findUserById(userId));
-    	commentToUpdate.setEvent(eventService.findEventById(eventId));
+    	commentToUpdate.setCommentAuthor(userService.findUserById(userId));
+    	commentToUpdate.setCommentEvent(eventService.findEventById(eventId));
     	commentToUpdate.setText(commentData.getDto().getText());
     	commentToUpdate.setEditedAt();
     	

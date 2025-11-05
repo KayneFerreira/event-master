@@ -5,11 +5,11 @@ import com.project.event_master.application.services.UserService;
 import com.project.event_master.application.usecases.UseCase;
 import com.project.event_master.domain.entities.EventEntity;
 import com.project.event_master.domain.entities.UserEntity;
+import com.project.event_master.dtos.event.AllEventsResponseDTO;
 import com.project.event_master.dtos.event.CreateEventDTO;
-import com.project.event_master.dtos.event.EventResponseDTO;
 import com.project.event_master.mappers.EventMapper;
 
-public class CreateEventUseCase implements UseCase<CreateEventDTO, EventResponseDTO> {
+public class CreateEventUseCase implements UseCase<CreateEventDTO, AllEventsResponseDTO> {
 
     private final EventService eventService;
     private final EventMapper mapper;
@@ -21,11 +21,11 @@ public class CreateEventUseCase implements UseCase<CreateEventDTO, EventResponse
         this.userService = userService;
     }
 
-    public EventResponseDTO execute(CreateEventDTO dto) {
+    public AllEventsResponseDTO execute(CreateEventDTO dto) {
     	UserEntity author = userService.findUserById(dto.getEventAuthor().getId());
         EventEntity newEvent = mapper.toEntity(dto);
         newEvent.setEventAuthor(author);
-        return mapper.toDto(eventService.createNewEvent(newEvent));
+        return mapper.toAllEventsDto(eventService.createNewEvent(newEvent));
     }
 
 }

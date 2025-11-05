@@ -13,15 +13,16 @@ public class EventCommentDisplayDTO {
 
     private final String text;
 
-    private final CommentAuthorDTO author;
+    private final CommentAuthorDTO commentAuthor;
 
     private final Instant createdAt;
     private final Instant editedAt;
     
-	public EventCommentDisplayDTO(Long id, String text, CommentAuthorDTO author, Instant createdAt, Instant editedAt) {
+	public EventCommentDisplayDTO(Long id, String text, CommentAuthorDTO commentAuthor, 
+			Instant createdAt, Instant editedAt) {
 		this.id = id;
 		this.text = text;
-		this.author = author;
+		this.commentAuthor = commentAuthor;
 		this.createdAt = createdAt;
 		this.editedAt = editedAt;
 	}
@@ -34,8 +35,8 @@ public class EventCommentDisplayDTO {
 		return text;
 	}
 
-	public CommentAuthorDTO getAuthor() {
-		return author;
+	public CommentAuthorDTO getCommentAuthor() {
+		return commentAuthor;
 	}
 
 	public Instant getCreatedAt() {
@@ -48,13 +49,13 @@ public class EventCommentDisplayDTO {
 
 	@Override
 	public String toString() {
-		return "EventCommentDisplayDTO [id=" + id + ", text=" + text + ", author=" + author 
-				+ ", createdAt=" + createdAt + ", editedAt=" + editedAt + "]";
+		return "EventCommentDisplayDTO [id=" + id + ", text=" + text + ", commentAuthor=" 
+				+ commentAuthor + ", createdAt=" + createdAt + ", editedAt=" + editedAt + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(author, createdAt, editedAt, id, text);
+		return Objects.hash(commentAuthor, createdAt, editedAt, id, text);
 	}
 
 	@Override
@@ -66,7 +67,7 @@ public class EventCommentDisplayDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		EventCommentDisplayDTO other = (EventCommentDisplayDTO) obj;
-		return Objects.equals(author, other.author) && Objects.equals(createdAt, other.createdAt)
+		return Objects.equals(commentAuthor, other.commentAuthor) && Objects.equals(createdAt, other.createdAt)
 				&& Objects.equals(editedAt, other.editedAt) && Objects.equals(id, other.id)
 				&& Objects.equals(text, other.text);
 	}

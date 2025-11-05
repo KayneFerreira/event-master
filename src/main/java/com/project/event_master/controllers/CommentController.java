@@ -25,7 +25,7 @@ import com.project.event_master.dtos.comment.CreateCommentDTO;
 import com.project.event_master.dtos.comment.UpdateCommentDTO;
 
 @RestController
-@RequestMapping("/api/users/{userId}/events/{eventId}/comments")
+@RequestMapping("/api/events/{eventId}/comments")
 public class CommentController {
 
 	private final CreateCommentUseCase createNewComment;
@@ -49,9 +49,8 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<CommentResponseDTO> createNewComment(@RequestBody CreateCommentDTO comment, 
-                                          @PathVariable Long userId, 
-                                          @PathVariable Long eventId) {
-        CreateCommentInput commentInput = new CreateCommentInput(comment, userId, eventId);
+									    					   @PathVariable Long eventId) {
+        CreateCommentInput commentInput = new CreateCommentInput(comment, eventId);
         CommentResponseDTO response = (createNewComment.execute(commentInput));
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

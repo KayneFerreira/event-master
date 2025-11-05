@@ -16,8 +16,8 @@ public class EventUseCaseConfig {
     }
 
     @Bean
-    FindAllEventsUseCase findAllEventsUseCase(EventService service, EventMapper mapper) {
-        return new FindAllEventsUseCase(service, mapper);
+    FindAllEventsUseCase findAllEventsUseCase(EventService eventService, EventMapper eventMapper) {
+        return new FindAllEventsUseCase(eventService, eventMapper);
     }
 
     @Bean
