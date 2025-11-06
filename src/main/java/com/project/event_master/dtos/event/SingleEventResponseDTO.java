@@ -64,8 +64,8 @@ public class SingleEventResponseDTO {
 
     @Override
 	public String toString() {
-		return "EventResponseDTO [id=" + id + ", title=" + title + ", eventAddress=" + eventAddress + ", eventAuthor="
-				+ eventAuthor + ", comments=" + comments + "]";
+		return "SingleEventResponseDTO [id=" + id + ", title=" + title + ", eventAddress=" 
+				+ eventAddress + ", eventAuthor=" + eventAuthor + ", comments=" + comments + "]";
 	}
 
     // HASH CODE AND EQUALS--------------------------------------------------------------

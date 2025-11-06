@@ -40,9 +40,6 @@ public class UpdateCommentUseCase implements UseCase<UpdateCommentInput, Comment
     		String newText = commentData.getDto().getText();
     		
     		commentToUpdate = buildUpdateComment(commentToUpdate, newText, eventId, userId);
-    		
-    		System.out.println("UPDATED COMMENT: " + commentToUpdate);
-    		
     		return commentMapper.toDto(commentService.updateComment(commentToUpdate, commentId));
     		
     	} else {

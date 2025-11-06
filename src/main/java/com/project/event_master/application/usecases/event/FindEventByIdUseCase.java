@@ -8,15 +8,15 @@ import com.project.event_master.mappers.EventMapper;
 public class FindEventByIdUseCase implements UseCase<Long, SingleEventResponseDTO> {
 
     private final EventService service;
-    private final EventMapper mapper;
+    private final EventMapper eventMapper;
 
-    public FindEventByIdUseCase(EventService service, EventMapper mapper) {
+    public FindEventByIdUseCase(EventService service, EventMapper eventMapper) {
         this.service = service;
-        this.mapper = mapper;
+        this.eventMapper = eventMapper;
     }
 
     public SingleEventResponseDTO execute(Long id) {
-        return mapper.toSingleEventDto(service.findEventById(id));
+    	return eventMapper.toSingleEventDto(service.findEventById(id));
     }
     
 }

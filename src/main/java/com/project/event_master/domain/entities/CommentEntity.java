@@ -3,7 +3,6 @@ package com.project.event_master.domain.entities;
 import java.time.Instant;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -35,7 +34,6 @@ public class CommentEntity {
     private UserEntity commentAuthor;
 
     @ManyToOne
-    @JsonBackReference
     private EventEntity commentEvent;
 
     private Instant createdAt;

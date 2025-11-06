@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.event_master.domain.valueobjects.PhysicalAddress;
 
 import jakarta.persistence.CascadeType;
@@ -52,10 +52,11 @@ public class EventEntity {
 
     @OneToMany(
         mappedBy = "commentEvent", 
-        cascade = CascadeType.ALL, 
+        cascade = CascadeType.ALL,
+        orphanRemoval = true,
         fetch = FetchType.LAZY
         )
-    @JsonManagedReference
+    @JsonIgnore
     private List<CommentEntity> eventComments = new ArrayList<>();
 
     // CONSTRUCTORS ---------------------------------------------------------------------
