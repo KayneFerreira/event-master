@@ -1,7 +1,6 @@
 package com.project.event_master.domain.entities;
 
 import java.time.Instant;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,13 +10,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "comments")
+@Data
+@NoArgsConstructor
 public class CommentEntity {
 
-    // ATTRIBUTES -----------------------------------------------------------------------
-
+    /*
+        TODO:
+            [ ] Fill attributes
+    */
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,54 +46,8 @@ public class CommentEntity {
 
     private Instant editedAt;
 
-    // CONSTRUCTORS ---------------------------------------------------------------------
-
-    public CommentEntity() {}
-
-    // GETTERS --------------------------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public UserEntity getCommentAuthor() {
-        return commentAuthor;
-    }
-
-    public EventEntity getCommentEvent() {
-        return commentEvent;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public Instant getEditedAt() {
-        return editedAt;
-    }
-
-    // SETTERS --------------------------------------------------------------------------
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setCommentAuthor(UserEntity commentAuthor) {
-        this.commentAuthor = commentAuthor;
-    }
-
-    public void setCommentEvent(EventEntity commentEvent) {
-        this.commentEvent = commentEvent;
-    }
-
+    // CUSTOM SETTERS -------------------------------------
+    
     public void setCreatedAt() {
         this.createdAt = Instant.now();
     }
@@ -95,32 +55,5 @@ public class CommentEntity {
     public void setEditedAt() {
         this.editedAt = Instant.now();
     }
-
-    // TO STRING ------------------------------------------------------------------------
-
-    @Override
-	public String toString() {
-		return "CommentEntity [id=" + id + ", text=" + text + ", createdAt=" + createdAt 
-				+ ", editedAt=" + editedAt + "]";
-	}
-
-    // HASH CODE AND EQUALS -------------------------------------------------------------
-
-    @Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-    @Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		CommentEntity other = (CommentEntity) obj;
-		return Objects.equals(id, other.id);
-	}
 
 }

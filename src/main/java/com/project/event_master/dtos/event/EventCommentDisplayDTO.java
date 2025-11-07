@@ -1,75 +1,17 @@
 package com.project.event_master.dtos.event;
 
 import java.time.Instant;
-import java.util.Objects;
 
 import com.project.event_master.dtos.comment.CommentAuthorDTO;
 
-public class EventCommentDisplayDTO {
+public record EventCommentDisplayDTO (
+	    Long id,
+	    String text,
+	    CommentAuthorDTO commentAuthor,
+	    Instant createdAt,
+	    Instant editedAt) {}
 
-    // ATTRIBUTES -----------------------------------------------------------------------
-
-    private final Long id;
-
-    private final String text;
-
-    private final CommentAuthorDTO commentAuthor;
-
-    private final Instant createdAt;
-    private final Instant editedAt;
-    
-	public EventCommentDisplayDTO(Long id, String text, CommentAuthorDTO commentAuthor, 
-			Instant createdAt, Instant editedAt) {
-		this.id = id;
-		this.text = text;
-		this.commentAuthor = commentAuthor;
-		this.createdAt = createdAt;
-		this.editedAt = editedAt;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public CommentAuthorDTO getCommentAuthor() {
-		return commentAuthor;
-	}
-
-	public Instant getCreatedAt() {
-		return createdAt;
-	}
-
-	public Instant getEditedAt() {
-		return editedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "EventCommentDisplayDTO [id=" + id + ", text=" + text + ", commentAuthor=" 
-				+ commentAuthor + ", createdAt=" + createdAt + ", editedAt=" + editedAt + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(commentAuthor, createdAt, editedAt, id, text);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EventCommentDisplayDTO other = (EventCommentDisplayDTO) obj;
-		return Objects.equals(commentAuthor, other.commentAuthor) && Objects.equals(createdAt, other.createdAt)
-				&& Objects.equals(editedAt, other.editedAt) && Objects.equals(id, other.id)
-				&& Objects.equals(text, other.text);
-	}
-
-}
+	/*
+	    TODO:
+	        [ ] Fill attributes
+	*/

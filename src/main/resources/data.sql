@@ -7,7 +7,7 @@ INSERT INTO address (city) VALUES
 ('Porto Alegre');
 
 -- Inserindo usuários
-INSERT INTO users (name, birth_date, cpf, username, password, role, address_id) VALUES
+INSERT INTO users (name, birth_date, cpf, username, password, role, user_address_id) VALUES
 ('Ana Souza', '1990-05-12', '12345678909', 'ana.souza', 'senha123', 'ROLE_USER', 1),
 ('Carlos Lima', '1985-11-23', '98765432100', 'carlos.lima', 'segredo456', 'ROLE_USER', 2),
 ('Beatriz Mendes', '1998-07-08', '45678912360', 'bia.mendes', '123abc', 'ROLE_USER', 3),

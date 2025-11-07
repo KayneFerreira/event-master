@@ -20,7 +20,14 @@ public class UpdateEventUseCase implements UseCase<UpdateEventInput, SingleEvent
     public SingleEventResponseDTO execute(UpdateEventInput eventData) {
         UpdateEventDTO newEvent = eventData.getDto();
         EventEntity eventToUpdate = service.findEventById(eventData.getId());
+        
+        System.out.println("\nEVENT NEW DATA: " + newEvent);
+        System.out.println("\nEVENT TO UPDATE: " + eventToUpdate);
+        
         mapper.updateEntityFromDto(newEvent, eventToUpdate);
+        
+        System.out.println("\nUPDATED EVENT: " + eventToUpdate);
+        
         return mapper.toSingleEventDto(service.updateEvent(eventToUpdate));
     }
 

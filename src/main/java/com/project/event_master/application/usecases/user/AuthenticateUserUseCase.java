@@ -30,7 +30,7 @@ public class AuthenticateUserUseCase implements UseCase<AuthenticateUserDTO, Res
 	
 	public ResponseEntity<AuthUserResponseDTO> execute(AuthenticateUserDTO dto) {
 		var credentials = new UsernamePasswordAuthenticationToken(
-				dto.getUsername(), dto.getPassword());
+				dto.username(), dto.password());
 		Authentication auth = authManager.authenticate(credentials);
 		
 		if(!(auth.getPrincipal() instanceof UserDetailsImpl userDetails)) {

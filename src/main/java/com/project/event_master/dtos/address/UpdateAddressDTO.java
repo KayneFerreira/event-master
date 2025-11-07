@@ -1,63 +1,18 @@
 package com.project.event_master.dtos.address;
 
-import java.util.Objects;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 public class UpdateAddressDTO {
 
-    // ATTRIBUTES -----------------------------------------------------------------------
-
+    /*
+        TODO:
+            [ ] Fill attributes
+    */
+	
     private Long id;
-
     private String city;
-
-    // CONSTRUCTORS ---------------------------------------------------------------------
-
-    public UpdateAddressDTO() {}
-
-    // GETTERS --------------------------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    // SETTERS --------------------------------------------------------------------------
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    // TO STRING ------------------------------------------------------------------------
-
-    @Override
-    public String toString() {
-        return "UpdateAddressDTO [id=" + id + ", city=" + city + "]";
-    }
-
-    // HASH CODE AND EQUALS -------------------------------------------------------------
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, city);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UpdateAddressDTO other = (UpdateAddressDTO) obj;
-        return Objects.equals(id, other.id) && Objects.equals(city, other.city);
-    }
 
 }

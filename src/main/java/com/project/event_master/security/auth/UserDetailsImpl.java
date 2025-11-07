@@ -21,17 +21,17 @@ public class UserDetailsImpl implements UserDetails {
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(user.getRole().name()));
+		return List.of(new SimpleGrantedAuthority(user.role().name()));
 	}
 	
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return user.username();
 	}
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return user.password();
 	}
 
 	@Override

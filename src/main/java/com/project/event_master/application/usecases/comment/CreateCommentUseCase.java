@@ -33,7 +33,7 @@ public class CreateCommentUseCase implements UseCase<CreateCommentInput, Comment
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	
     	if(auth.getPrincipal() instanceof UserDetailsImpl userDetails) {
-    		long userId = userDetails.getUser().getId();
+    		long userId = userDetails.getUser().id();
     		long eventId = commentData.getEventId();
     		CommentEntity newComment = commentMapper.toEntity(commentData.getDto());
     		

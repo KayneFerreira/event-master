@@ -33,14 +33,14 @@ public class UpdateCommentUseCase implements UseCase<UpdateCommentInput, Comment
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	
     	if(auth.getPrincipal() instanceof UserDetailsImpl userDetails) {
-    		long userId = userDetails.getUser().getId();
+    		long userId = userDetails.getUser().id();
     		long eventId = commentData.getEventId();
     		long commentId = commentData.getCommentId();
     		CommentEntity commentToUpdate = commentService.findCommentById(commentId);
     		String newText = commentData.getDto().getText();
     		
     		commentToUpdate = buildUpdateComment(commentToUpdate, newText, eventId, userId);
-    		return commentMapper.toDto(commentService.updateComment(commentToUpdate, commentId));
+    		return commentMapper.toDto(commentService.updateComment(commentToUpdate));
     		
     	} else {
     		throw new IllegalStateException("Usuário autenticado não é do tipo esperado.");

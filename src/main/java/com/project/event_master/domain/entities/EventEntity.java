@@ -2,7 +2,6 @@ package com.project.event_master.domain.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -17,21 +16,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "events")
+@Data
+@NoArgsConstructor
 public class EventEntity {
 
-    // ATTRIBUTES -----------------------------------------------------------------------
     /*
         TODO:
             [ ] Fill attributes
-                - Create getters and setters
-                - Update toString
-            [x] Create associations
-                - Address
-                - Comments
-     */
+    */
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,7 +44,7 @@ public class EventEntity {
         "birthDate",
         "cpf",
         "password",
-        "address"
+        "userAddress"
     })
     private UserEntity eventAuthor;
 
@@ -59,75 +57,4 @@ public class EventEntity {
     @JsonIgnore
     private List<CommentEntity> eventComments = new ArrayList<>();
 
-    // CONSTRUCTORS ---------------------------------------------------------------------
-
-    public EventEntity() {}
-
-    // GETTERS --------------------------------------------------------------------------
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public PhysicalAddress getEventAddress() {
-        return eventAddress;
-    }
-
-    public List<CommentEntity> getEventComments() {
-        return eventComments;
-    }
-    
-    public UserEntity getEventAuthor() {
-    	return eventAuthor;
-    }
-
-    // SETTERS --------------------------------------------------------------------------
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setEventAddress(PhysicalAddress eventAddress) {
-        this.eventAddress = eventAddress;
-    }
-    
-    public void setEventAuthor(UserEntity eventAuthor) {
-    	this.eventAuthor = eventAuthor;
-    }
-
-    // TO STRING ------------------------------------------------------------------------
-
-    @Override
-	public String toString() {
-		return "EventEntity [id=" + id + ", title=" + title + ", eventAddress=" + eventAddress 
-				+ ", eventAuthor=" + eventAuthor + ", eventComments=" + eventComments + "]";
-	}
-
-    // HASH CODE AND EQUALS--------------------------------------------------------------
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        EventEntity other = (EventEntity) obj;
-        return Objects.equals(id, other.id);
-    }
-    
 }

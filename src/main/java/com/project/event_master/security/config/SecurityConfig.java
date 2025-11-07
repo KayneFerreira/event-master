@@ -37,7 +37,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/events").hasAnyRole("USER")
 						.requestMatchers(HttpMethod.POST, "/api/events/*/comments/**").hasAnyRole("USER")
-						.anyRequest().permitAll()
+						.anyRequest().authenticated()
 				)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
